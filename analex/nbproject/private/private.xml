@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/home/igor/NetBeansProjects/analex/src/analex/AnalizadorLexico.java</file>
+            <file>file:/home/igor/NetBeansProjects/analex/src/analex/Token/TokenIdentificador.java</file>
+            <file>file:/home/igor/NetBeansProjects/analex/src/analex/Token/Lexema.java</file>
+            <file>file:/home/igor/NetBeansProjects/analex/src/analex/Token/Token.java</file>
+            <file>file:/home/igor/NetBeansProjects/analex/src/analex/Token/TokenSeparador.java</file>
+            <file>file:/home/igor/NetBeansProjects/analex/src/analex/Token/TokenPalavraReservada.java</file>
+            <file>file:/home/igor/NetBeansProjects/analex/src/analex/Principal.java</file>
+            <file>file:/home/igor/NetBeansProjects/analex/src/analex/Token/TokenOperador.java</file>
+            <file>file:/home/igor/NetBeansProjects/analex/src/analex/ExpressoesRegulares.java</file>
+        </group>
+    </open-files>
+</project-private>
