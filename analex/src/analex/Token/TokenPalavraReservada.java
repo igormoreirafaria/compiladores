@@ -17,9 +17,9 @@ public class TokenPalavraReservada extends Token {
     private static Map<String, String> palavrasReservada = new HashMap<String, String>();
     static {
         HashMap<String, String> aMap = new HashMap<String, String>();
-        aMap.put("char", "CHR");
+        aMap.put("char", "CHAR");
         aMap.put("int", "INT");
-        aMap.put("float", "FLT");
+        aMap.put("float", "FLOAT");
         aMap.put("if", "IF");
         aMap.put("for", "FOR");
         aMap.put("while", "WHILE");

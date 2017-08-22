@@ -7,7 +7,6 @@ package analex;
 
 import analex.Token.Token;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  *
@@ -47,35 +46,60 @@ public class AnalisadorSintatico {
                                 i++;
                                 return true;
                             }else{
-                                System.out.println("missing token at "+"Posição: [" + tokens.get(i).getLexema().getLinha() + " , " + tokens.get(i).getLexema().getColuna() + "]");
+                                System.out.println("missing token INT at "+"Posição: [" + tokens.get(i).getLexema().getLinha() + " , " + tokens.get(i).getLexema().getColuna() + "]");
                                 return false;
                             }
                         }else{
-                            System.out.println("missing token at "+"Posição: [" + tokens.get(i).getLexema().getLinha() + " , " + tokens.get(i).getLexema().getColuna() + "]");
+                            System.out.println("missing token MAIN at "+"Posição: [" + tokens.get(i).getLexema().getLinha() + " , " + tokens.get(i).getLexema().getColuna() + "]");
                             return false;
                         }
                     }else{
-                        System.out.println("missing token at "+"Posição: [" + tokens.get(i).getLexema().getLinha() + " , " + tokens.get(i).getLexema().getColuna() + "]");
+                        System.out.println("missing token OPEN_PAR at "+"Posição: [" + tokens.get(i).getLexema().getLinha() + " , " + tokens.get(i).getLexema().getColuna() + "]");
                         return false;
                     }
                 }else{
-                    System.out.println("missing token at "+"Posição: [" + tokens.get(i).getLexema().getLinha() + " , " + tokens.get(i).getLexema().getColuna() + "]");
+                    System.out.println("missing token CLOSE_PAR at "+"Posição: [" + tokens.get(i).getLexema().getLinha() + " , " + tokens.get(i).getLexema().getColuna() + "]");
                     return false;
                 }
             }else{
-                System.out.println("missing token at "+"Posição: [" + tokens.get(i).getLexema().getLinha() + " , " + tokens.get(i).getLexema().getColuna() + "]");
+                System.out.println("missing token OPEN_BRACKET at "+"Posição: [" + tokens.get(i).getLexema().getLinha() + " , " + tokens.get(i).getLexema().getColuna() + "]");
                 return false;
             }
         }else{
-            System.out.println("missing token at "+"Posição: [" + tokens.get(i).getLexema().getLinha() + " , " + tokens.get(i).getLexema().getColuna() + "]");
+            System.out.println("missing token CLOSE_BRACKET at "+"Posição: [" + tokens.get(i).getLexema().getLinha() + " , " + tokens.get(i).getLexema().getColuna() + "]");
             return false;
         }
     }
     
     public boolean Declaracoes(ArrayList<Token> tokens){
-        System.out.println("chegou em declaracoes");
-        return false;
+        if(Declaracao(tokens) == true){
+            Declaracoes(tokens);
+            return true;
+        }else{
+            return false;
+        }
     }
     
+    public boolean Declaracao(ArrayList<Token> tokens){
+        if(tokens.get(i).getSimbolo().matches("INT") || tokens.get(i).getSimbolo().matches("FLOAT") || tokens.get(i).getSimbolo().matches("CHAR")){
+            i++;
+            if(tokens.get(i).getSimbolo().matches("ID")){
+                i++;
+                if(tokens.get(i).getSimbolo().matches("SEMI")){
+                    i++;
+                    return true;
+                }else{                  
+                    System.out.println("missing token SEMI at "+"Posição: [" + tokens.get(i).getLexema().getLinha() + " , " + tokens.get(i).getLexema().getColuna() + "]");
+                    return false;
+                }
+            }else{
+                System.out.println("missing token ID at "+"Posição: [" + tokens.get(i).getLexema().getLinha() + " , " + tokens.get(i).getLexema().getColuna() + "]");
+                return false;
+            }
+        }else{
+            System.out.println("missing token TIPO at "+"Posição: [" + tokens.get(i).getLexema().getLinha() + " , " + tokens.get(i).getLexema().getColuna() + "]");
+            return false;
+        }
+    }
     
 }

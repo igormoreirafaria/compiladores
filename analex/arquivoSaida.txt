@@ -15,6 +15,48 @@ Posição: [3 , 10]
 Token: < OPEN_BRACKET , { >
 Posição: [3 , 11]
 
+Token: < INT , int >
+Posição: [4 , 2]
+
+Token: < ID , abacate >
+Posição: [4 , 6]
+
+Token: < SEMI , ; >
+Posição: [4 , 13]
+
+Token: < FLOAT , float >
+Posição: [5 , 2]
+
+Token: < ID , flt >
+Posição: [5 , 8]
+
+Token: < SEMI , ; >
+Posição: [5 , 11]
+
+Token: < CHAR , char >
+Posição: [6 , 2]
+
+Token: < ID , aux >
+Posição: [6 , 7]
+
+Token: < SEMI , ; >
+Posição: [6 , 10]
+
+Token: < INT , int >
+Posição: [8 , 2]
+
+Token: < ID , p >
+Posição: [10 , 0]
+
+Token: < ID , itn >
+Posição: [10 , 2]
+
+Token: < ID , plas >
+Posição: [10 , 6]
+
+Token: < SEMI , ; >
+Posição: [10 , 10]
+
 Token: < CLOSE_BRACKET , } >
-Posição: [5 , 1]
+Posição: [11 , 1]
 
