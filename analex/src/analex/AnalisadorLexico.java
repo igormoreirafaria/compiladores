@@ -23,13 +23,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import static javafx.scene.input.KeyCode.K;
 
 /**
  *
  * @author igor
  */
-public class AnalizadorLexico {
+public class AnalisadorLexico {
 
     private final ArrayList<Token> tokens = new ArrayList<>();
 
@@ -162,7 +161,7 @@ public class AnalizadorLexico {
                 i++;
             }
         } catch (IOException ex) {
-            Logger.getLogger(AnalizadorLexico.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AnalisadorLexico.class.getName()).log(Level.SEVERE, null, ex);
         } catch (StringIndexOutOfBoundsException o) {
 
         }

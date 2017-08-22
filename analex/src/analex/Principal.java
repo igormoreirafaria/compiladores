@@ -23,14 +23,16 @@ import java.util.Scanner;
  * @author igor
  */
 public class Principal {
-    private static AnalizadorLexico analex;
+    private static AnalisadorLexico analex;
+    private static AnalisadorSintatico anasint;
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args){
         // TODO code application logic here
         
-        analex = new AnalizadorLexico();
+        analex = new AnalisadorLexico();
+        anasint = new AnalisadorSintatico();
         final String nomeArquivoEntrada, nomeArquivoSaida;
         final Scanner sc = new Scanner(System.in);
         final InputStream is;
@@ -73,6 +75,13 @@ public class Principal {
                 bw.newLine();
                 bw.newLine();				
             }
+            
+            anasint.Run(analex.getTokens());
+            
+            
+            
+            
+            
             bw.flush();
             is.close();
             isr.close();
