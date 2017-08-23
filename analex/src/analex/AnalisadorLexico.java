@@ -8,7 +8,7 @@ package analex;
 import analex.Token.Lexema;
 import analex.Token.Token;
 import analex.Token.TokenIdentificador;
-import analex.Token.TokenNumero;
+import analex.Token.TokenNumeroINT;
 import analex.Token.TokenOpAnalitico;
 import analex.Token.TokenOpIncDec;
 import analex.Token.TokenOperador;
@@ -35,11 +35,13 @@ public class AnalisadorLexico {
     public ArrayList<Token> getTokens() {
         return tokens;
     }
+  
    
     public void Run(BufferedReader br) {
         char cabeca = 0;
         String token = "";
         String linha;
+        int flagComment = 0; //0=fora de comentario 1=dentro de comentario
         try {
             int i = 0;
             while (br.ready()) {
@@ -48,12 +50,31 @@ public class AnalisadorLexico {
 
                     cabeca = linha.charAt(j);
                     //System.out.println(cabeca);
-
+                    
+                    //comentario em multiplas linhas
+                    if(flagComment == 1){                      
+                        if(cabeca == '*'){
+                            ++j;
+                            cabeca = linha.charAt(j);
+                            if(cabeca == '/'){
+                                flagComment = 0;
+                            }else{
+                                --j;
+                                cabeca = linha.charAt(j);
+                            }
+                        }
+                        continue;                   
+                    }
+                    
+                    
+                    
                     //trata #include<>
                     if (cabeca == '#') {
                         token = "";
                         break;
                     }
+                    
+                    
                     
                     //trata espaço, tab e quebra de linha
                     
@@ -74,6 +95,33 @@ public class AnalisadorLexico {
                         }
                         continue;
                     }
+                    
+                    //comentario
+                    
+                    if(cabeca == '/'){                             
+                        ++j;
+                        cabeca = linha.charAt(j);
+                        if(cabeca == '/'){
+                            if(token.length() > 0){
+                                regexMatch(new Lexema(token, i + 1, (j+1) - token.length()));
+                                token = "";
+                            }
+                            break;
+                        }else if(cabeca == '*'){                                                      
+                            if(token.length() > 0){
+                                regexMatch(new Lexema(token, i + 1, (j+1) - token.length()));
+                                token = "";
+                            }
+                            flagComment = 1;
+                            continue;
+                        }else{
+                            --j;
+                            cabeca = linha.charAt(j);                         
+                        }
+                    }
+                    
+                    
+                    
                     
                     //literal em aspas simples
                     if(cabeca == '\''){
@@ -102,7 +150,7 @@ public class AnalisadorLexico {
                     }
                     
                     //op aritmeticos, inc e dec
-                    if(cabeca == '+' || cabeca == '-' || cabeca == '*' || cabeca == '/' || cabeca == '^'){
+                    if(cabeca == '+' || cabeca == '-' || (cabeca == '*' && flagComment == 0) || (cabeca == '/' && flagComment == 0) || cabeca == '^'){
                         if(token.length() > 0){
                             regexMatch(new Lexema(token, i + 1, (j+1) - token.length()));
                             token = "";
@@ -172,8 +220,10 @@ public class AnalisadorLexico {
             tokens.add(new TokenPalavraReservada(token));
         }else if(token.getLexema().matches(ExpressoesRegulares.regexSeparadores)){          
             tokens.add(new TokenSeparador(token));
-        }else if(token.getLexema().matches(ExpressoesRegulares.regexNumeros)){
-            tokens.add(new TokenNumero(token));
+        }else if(token.getLexema().matches(ExpressoesRegulares.regexINT)){
+            tokens.add(new TokenNumeroINT(token));
+        }else if(token.getLexema().matches(ExpressoesRegulares.regexFLOAT)){
+            tokens.add(new TokenNumeroINT(token));
         }else if(token.getLexema().matches(ExpressoesRegulares.regexIndentificadores)){
             tokens.add(new TokenIdentificador(token));
         }else if(token.getLexema().matches(ExpressoesRegulares.regexOperadoresLogicos)){

@@ -9,12 +9,12 @@ package analex.Token;
  *
  * @author igor
  */
-public class TokenNumero extends Token {
+public class TokenNumeroINT extends Token {
 
-	public TokenNumero(Lexema lexema) {
+	public TokenNumeroINT(Lexema lexema) {
 		this.setLexema(lexema);
-		this.setSimbolo(lexema.getLexema());
-		this.setValor("NUM");
+		this.setSimbolo("INTEGER_CONST");
+		this.setValor(lexema.getLexema());
 	}
 
 	@Override

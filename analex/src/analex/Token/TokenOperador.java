@@ -26,7 +26,7 @@ public class TokenOperador extends Token {
         aMap.put("<=", "LTE");
         aMap.put(">=", "GTE");
         aMap.put("==", "EQV");
-        aMap.put("!=", "DIF");
+        aMap.put("!=", "DIFF");
         opLogico = Collections.unmodifiableMap((Map<String, String>) aMap);
     }
     

@@ -24,7 +24,7 @@ public class TokenOpAnalitico extends Token{
         aMap.put('/', "DIV");
         aMap.put('*', "MUL");
         aMap.put('^', "POW");
-        aMap.put('=', "ATT");
+        aMap.put('=', "ATTR");
         opAnalitico = Collections.unmodifiableMap((Map<Character, String>) aMap);
     }
     

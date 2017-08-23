@@ -28,6 +28,7 @@ public class TokenPalavraReservada extends Token {
         aMap.put("break", "BRK");
         aMap.put("main", "MAIN");
         aMap.put("printf", "PRT");
+        aMap.put("scanf", "SCF");
         
         palavrasReservada = Collections.unmodifiableMap((Map<String, String>) aMap);
     }

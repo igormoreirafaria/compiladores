@@ -28,7 +28,7 @@ public class TokenSeparador extends Token {
         aMap.put('}', "CLOSE_BRACKET");
         aMap.put('\"', "QUOTATION");
         aMap.put('\'', "APOST");
-        aMap.put(',', "COMA");
+        aMap.put(',', "COMMA");
         aMap.put('.', "DOT");
         aMap.put('\t', "TAB");
         aMap.put('\n', "ENTER");

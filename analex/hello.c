@@ -1,11 +1,15 @@
 #include <stdio.h>
 
 int main(){
-	int abacate;
-	float flt;
-	char aux;
-
-	int p
-
-	itn plas;
+	
+	/*ESCREVA QUALQUER CODIGO EM C POR FAVOR E ESPERE EU VOLTAR*/
+	int c =39860;
+	for (int i = 0; i < c; ++i)
+	{
+		printf("BUCETA DO CARALHO\n");
+	}
+	if(i == 39860){
+		i++;
+	}
+	return 0;
 }
