@@ -85,6 +85,7 @@ public class AnalisadorLexico {
                         }
                         continue;
                     }
+                    //separadores
                     if(cabeca == '(' || cabeca == ')' || cabeca == '{'  || cabeca == '}' || cabeca == ';' || cabeca == ',' || cabeca == '[' || cabeca == ']'){
                         if(token.length() > 0){
                             regexMatch(new Lexema(token, i + 1, (j+1) - token.length()));       

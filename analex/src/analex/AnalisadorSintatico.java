@@ -52,38 +52,49 @@ public class AnalisadorSintatico {
                                             return false;
                                         }else{
                                             System.out.println("missing token CLOSE_BRACKET at "+"Posição: [" + tokens.get(i).getLexema().getLinha() + " , " + tokens.get(i).getLexema().getColuna() + "]");
+                                            i++;
+                                            return true;
                                         }
                                     }else{
                                         System.out.println("missing token SEMI at "+"Posição: [" + tokens.get(i).getLexema().getLinha() + " , " + tokens.get(i).getLexema().getColuna() + "]");
+                                        i++;
+                                        return true;
                                     }
                                 }else{
                                     System.out.println("missing token INTEGER_CONST at "+"Posição: [" + tokens.get(i).getLexema().getLinha() + " , " + tokens.get(i).getLexema().getColuna() + "]");
+                                    i++;
+                                    return true;
                                 }                                
                             }else{
                                 System.out.println("missing token RTR at "+"Posição: [" + tokens.get(i).getLexema().getLinha() + " , " + tokens.get(i).getLexema().getColuna() + "]");
+                                i++;
                                 return true;
                             }
                         }else{
                             System.out.println("missing token OPEN_BRACKET at "+"Posição: [" + tokens.get(i).getLexema().getLinha() + " , " + tokens.get(i).getLexema().getColuna() + "]");
+                            i++;
                             return true;
                         }
                     }else{
                         System.out.println("missing token CLOSE_PAR at "+"Posição: [" + tokens.get(i).getLexema().getLinha() + " , " + tokens.get(i).getLexema().getColuna() + "]");
+                        i++;
                         return true;
                     }
                 }else{
                     System.out.println("missing token OPEN_PAR at "+"Posição: [" + tokens.get(i).getLexema().getLinha() + " , " + tokens.get(i).getLexema().getColuna() + "]");
+                    i++;
                     return true;
                 }
             }else{
                 System.out.println("missing token MAIN at "+"Posição: [" + tokens.get(i).getLexema().getLinha() + " , " + tokens.get(i).getLexema().getColuna() + "]");
+                i++;
                 return true;
             }
         }else{
             System.out.println("missing token INT at "+"Posição: [" + tokens.get(i).getLexema().getLinha() + " , " + tokens.get(i).getLexema().getColuna() + "]");
+            i++;
             return true;
         }
-        return true;
     }
     
     public boolean Comandos(ArrayList<Token> tokens){
@@ -176,6 +187,7 @@ public class AnalisadorSintatico {
              return false;
             }else{
                 System.out.println("missing token CLOSE_BRACKET at "+"Posição: [" + tokens.get(i).getLexema().getLinha() + " , " + tokens.get(i).getLexema().getColuna() + "]");
+                i++;
                 return true;
             }
         }
@@ -192,22 +204,23 @@ public class AnalisadorSintatico {
                 if(tokens.get(i).getSimbolo().matches("SEMI")){
                     i++;
                     return false;
-                }else{
-                    System.out.println("missing token SEMI at "+"Posição: [" + tokens.get(i).getLexema().getLinha() + " , " + tokens.get(i).getLexema().getColuna() + "]");
-                    return true;
                 }
+                System.out.println("missing token SEMI at "+"Posição: [" + tokens.get(i).getLexema().getLinha() + " , " + tokens.get(i).getLexema().getColuna() + "]");
+                i++;
+                return true;   
             }else if(tokens.get(i).getSimbolo().matches("INC") || tokens.get(i).getSimbolo().matches("DEC")){
                 i++;
                 if(tokens.get(i).getSimbolo().matches("SEMI")){
                     i++;
                     return false;
                 }
-            }/*else{
-                System.out.println("missing token INC or DEC at "+"Posição: [" + tokens.get(i).getLexema().getLinha() + " , " + tokens.get(i).getLexema().getColuna() + "]");
+                System.out.println("missing token SEMI at "+"Posição: [" + tokens.get(i).getLexema().getLinha() + " , " + tokens.get(i).getLexema().getColuna() + "]");
                 return true;
-            }*/
+            }
+            System.out.println("missing token ATTR or INC or DEC at "+"Posição: [" + tokens.get(i).getLexema().getLinha() + " , " + tokens.get(i).getLexema().getColuna() + "]");
+            return true;
         }
-        return true;
+        return true;       
     }
         
     
@@ -217,6 +230,105 @@ public class AnalisadorSintatico {
             i++;
             if(tokens.get(i).getSimbolo().matches("OPEN_PAR")){
                 i++;
+                if(!Expressao(tokens)){
+                    if(tokens.get(i).getSimbolo().matches("CLOSE_PAR")){
+                        i++;
+                        if(tokens.get(i).getSimbolo().matches("OPEN_BRACKET")){
+                            i++;
+                            Comandos(tokens);
+                            if(tokens.get(i).getSimbolo().matches("CLOSE_BRACKET")){
+                                i++;
+                                ComandoSeNao(tokens);
+                                return false;
+                            }else{
+                                System.out.println("missing token CLOSE_BRACKET at "+"Posição: [" + tokens.get(i).getLexema().getLinha() + " , " + tokens.get(i).getLexema().getColuna() + "]");                           
+                                i++;
+                                ComandoSeNao(tokens);
+                                return false;
+                            }
+                        }else{
+                            System.out.println("missing token OPEN_BRACKET at "+"Posição: [" + tokens.get(i).getLexema().getLinha() + " , " + tokens.get(i).getLexema().getColuna() + "]");
+                            i++;
+                            Comandos(tokens);
+                            if(tokens.get(i).getSimbolo().matches("CLOSE_BRACKET")){
+                                i++;
+                                ComandoSeNao(tokens);
+                                return false;
+                            }else{
+                                System.out.println("missing token CLOSE_BRACKET at "+"Posição: [" + tokens.get(i).getLexema().getLinha() + " , " + tokens.get(i).getLexema().getColuna() + "]");                           
+                                return true;
+                            }
+                        }
+                    }else{
+                        System.out.println("missing token CLOSE_PAR at "+"Posição: [" + tokens.get(i).getLexema().getLinha() + " , " + tokens.get(i).getLexema().getColuna() + "]");                 
+                        i++;
+                        if(tokens.get(i).getSimbolo().matches("OPEN_BRACKET")){
+                            i++;
+                            Comandos(tokens);
+                            if(tokens.get(i).getSimbolo().matches("CLOSE_BRACKET")){
+                                i++;
+                                ComandoSeNao(tokens);
+                                return false;
+                            }else{
+                                System.out.println("missing token CLOSE_BRACKET at "+"Posição: [" + tokens.get(i).getLexema().getLinha() + " , " + tokens.get(i).getLexema().getColuna() + "]");                           
+                                return true;
+                            }
+                        }else{
+                            System.out.println("missing token OPEN_BRACKET at "+"Posição: [" + tokens.get(i).getLexema().getLinha() + " , " + tokens.get(i).getLexema().getColuna() + "]");
+                            i++;
+                            return true;
+                        }
+                    }
+                }
+                System.out.println("missing expression at "+"Posição: [" + tokens.get(i).getLexema().getLinha() + " , " + tokens.get(i).getLexema().getColuna() + "]");                
+                if(tokens.get(i).getSimbolo().matches("CLOSE_PAR")){
+                    i++;
+                    if(tokens.get(i).getSimbolo().matches("OPEN_BRACKET")){
+                        i++;
+                        Comandos(tokens);
+                        if(tokens.get(i).getSimbolo().matches("CLOSE_BRACKET")){
+                            i++;
+                            ComandoSeNao(tokens);
+                            return false;
+                        }else{
+                            System.out.println("missing token CLOSE_BRACKET at "+"Posição: [" + tokens.get(i).getLexema().getLinha() + " , " + tokens.get(i).getLexema().getColuna() + "]");                           
+                            return true;
+                        }
+                    }else{
+                        System.out.println("missing token OPEN_BRACKET at "+"Posição: [" + tokens.get(i).getLexema().getLinha() + " , " + tokens.get(i).getLexema().getColuna() + "]");
+                        i++;
+                        Comandos(tokens);
+                        if(tokens.get(i).getSimbolo().matches("CLOSE_BRACKET")){
+                            i++;
+                            ComandoSeNao(tokens);
+                            return false;
+                        }else{
+                            System.out.println("missing token CLOSE_BRACKET at "+"Posição: [" + tokens.get(i).getLexema().getLinha() + " , " + tokens.get(i).getLexema().getColuna() + "]");                           
+                            return true;
+                        }
+                    }
+                }else{
+                    System.out.println("missing token CLOSE_PAR at "+"Posição: [" + tokens.get(i).getLexema().getLinha() + " , " + tokens.get(i).getLexema().getColuna() + "]");                 
+
+                    if(tokens.get(i).getSimbolo().matches("OPEN_BRACKET")){
+                        i++;
+                        Comandos(tokens);
+                        if(tokens.get(i).getSimbolo().matches("CLOSE_BRACKET")){
+                            i++;
+                            ComandoSeNao(tokens);
+                            return false;
+                        }else{
+                            System.out.println("missing token CLOSE_BRACKET at "+"Posição: [" + tokens.get(i).getLexema().getLinha() + " , " + tokens.get(i).getLexema().getColuna() + "]");                           
+                            return true;
+                        }
+                    }else{
+                        System.out.println("missing token OPEN_BRACKET at "+"Posição: [" + tokens.get(i).getLexema().getLinha() + " , " + tokens.get(i).getLexema().getColuna() + "]");
+                        i++;
+                        return true;
+                    }
+                }
+            }else{
+                System.out.println("missing token OPEN_PAR at "+"Posição: [" + tokens.get(i).getLexema().getLinha() + " , " + tokens.get(i).getLexema().getColuna() + "]");                
                 Expressao(tokens);
                 if(tokens.get(i).getSimbolo().matches("CLOSE_PAR")){
                     i++;
@@ -228,20 +340,18 @@ public class AnalisadorSintatico {
                             ComandoSeNao(tokens);
                             return false;
                         }else{
-                            System.out.println("missing token CLOSE_BRACKET at "+"Posição: [" + tokens.get(i).getLexema().getLinha() + " , " + tokens.get(i).getLexema().getColuna() + "]");
+                            System.out.println("missing token CLOSE_BRACKET at "+"Posição: [" + tokens.get(i).getLexema().getLinha() + " , " + tokens.get(i).getLexema().getColuna() + "]");                           
                             return true;
                         }
                     }else{
                         System.out.println("missing token OPEN_BRACKET at "+"Posição: [" + tokens.get(i).getLexema().getLinha() + " , " + tokens.get(i).getLexema().getColuna() + "]");
+                        i++;
                         return true;
                     }
                 }else{
-                    System.out.println("missing token CLOSE_PAR at "+"Posição: [" + tokens.get(i).getLexema().getLinha() + " , " + tokens.get(i).getLexema().getColuna() + "]");
+                    System.out.println("missing token CLOSE_PAR at "+"Posição: [" + tokens.get(i).getLexema().getLinha() + " , " + tokens.get(i).getLexema().getColuna() + "]");                 
                     return true;
                 }
-            }else{
-                System.out.println("missing token OPEN_PAR at "+"Posição: [" + tokens.get(i).getLexema().getLinha() + " , " + tokens.get(i).getLexema().getColuna() + "]");
-                return true;
             }
         }
         return true;
@@ -252,7 +362,118 @@ public class AnalisadorSintatico {
             i++;
             if(tokens.get(i).getSimbolo().matches("OPEN_PAR")){
                 i++;
-                if(!Expressao(tokens) ){               
+                if(!Expressao(tokens) ){
+                    if(tokens.get(i).getSimbolo().matches("CLOSE_PAR")){
+                        i++;
+                        if(tokens.get(i).getSimbolo().matches("OPEN_BRACKET")){
+                            i++;
+                            Comandos(tokens);
+                            if(tokens.get(i).getSimbolo().matches("CLOSE_BRACKET")){
+                                i++;
+                                return false;
+                            }else{
+                                System.out.println("missing token CLOSE_BRACKET at "+"Posição: [" + tokens.get(i).getLexema().getLinha() + " , " + tokens.get(i).getLexema().getColuna() + "]");                              
+                                return true;
+                            }
+                        }else{
+                            System.out.println("missing token OPEN_BRACKET at "+"Posição: [" + tokens.get(i).getLexema().getLinha() + " , " + tokens.get(i).getLexema().getColuna() + "]");
+                            Comandos(tokens);
+                            if(tokens.get(i).getSimbolo().matches("CLOSE_BRACKET")){
+                                i++;
+                                return false;
+                            }
+                            else{
+                                System.out.println("missing token CLOSE_BRACKET at "+"Posição: [" + tokens.get(i).getLexema().getLinha() + " , " + tokens.get(i).getLexema().getColuna() + "]");
+                                return true;
+                            }                          
+                        }
+                    }else{
+                        System.out.println("missing token CLOSE_PAR at "+"Posição: [" + tokens.get(i).getLexema().getLinha() + " , " + tokens.get(i).getLexema().getColuna() + "]");
+                        if(tokens.get(i).getSimbolo().matches("OPEN_BRACKET")){
+                            i++;
+                            Comandos(tokens);
+                            if(tokens.get(i).getSimbolo().matches("CLOSE_BRACKET")){
+                                i++;
+                                return false;
+                            }
+                            else{
+                                System.out.println("missing token CLOSE_BRACKET at "+"Posição: [" + tokens.get(i).getLexema().getLinha() + " , " + tokens.get(i).getLexema().getColuna() + "]");
+                                i++;
+                                return true;
+                            }
+                        }else{
+                            System.out.println("missing token OPEN_BRACKET at "+"Posição: [" + tokens.get(i).getLexema().getLinha() + " , " + tokens.get(i).getLexema().getColuna() + "]");
+                            i++;
+                            Comandos(tokens);
+                            if(tokens.get(i).getSimbolo().matches("CLOSE_BRACKET")){
+                                i++;
+                                return false;
+                            }
+                            else{
+                                System.out.println("missing token CLOSE_BRACKET at "+"Posição: [" + tokens.get(i).getLexema().getLinha() + " , " + tokens.get(i).getLexema().getColuna() + "]");
+                                return true;
+                            }                          
+                        }                                
+                    }
+                }else{
+                    System.out.println("Missing Expression at " +"Posição: [" + tokens.get(i).getLexema().getLinha() + " , " + tokens.get(i).getLexema().getColuna() + "]");
+                    if(tokens.get(i).getSimbolo().matches("CLOSE_PAR")){
+                        i++;
+                        if(tokens.get(i).getSimbolo().matches("OPEN_BRACKET")){
+                            i++;
+                            Comandos(tokens);
+                            if(tokens.get(i).getSimbolo().matches("CLOSE_BRACKET")){
+                                i++;
+                                return false;
+                            }
+                            else{
+                                System.out.println("missing token CLOSE_BRACKET at "+"Posição: [" + tokens.get(i).getLexema().getLinha() + " , " + tokens.get(i).getLexema().getColuna() + "]");                                
+                                return true;
+                            }
+                        }else{
+                            System.out.println("missing token OPEN_BRACKET at "+"Posição: [" + tokens.get(i).getLexema().getLinha() + " , " + tokens.get(i).getLexema().getColuna() + "]");
+                            Comandos(tokens);
+                            if(tokens.get(i).getSimbolo().matches("CLOSE_BRACKET")){
+                                i++;
+                                return false;
+                            }else{
+                                System.out.println("missing token CLOSE_BRACKET at "+"Posição: [" + tokens.get(i).getLexema().getLinha() + " , " + tokens.get(i).getLexema().getColuna() + "]");                                
+                                return true;
+                            }                          
+                        }
+                    }else{
+                        System.out.println("missing token CLOSE_PAR at "+"Posição: [" + tokens.get(i).getLexema().getLinha() + " , " + tokens.get(i).getLexema().getColuna() + "]");
+                        if(tokens.get(i).getSimbolo().matches("OPEN_BRACKET")){
+                            i++;
+                            Comandos(tokens);
+                            if(tokens.get(i).getSimbolo().matches("CLOSE_BRACKET")){
+                                i++;
+                                return false;
+                            }
+                            else{
+                                System.out.println("missing token CLOSE_BRACKET at "+"Posição: [" + tokens.get(i).getLexema().getLinha() + " , " + tokens.get(i).getLexema().getColuna() + "]");
+                                i++;
+                                return true;
+                            }
+                        }else{
+                            System.out.println("missing token OPEN_BRACKET at "+"Posição: [" + tokens.get(i).getLexema().getLinha() + " , " + tokens.get(i).getLexema().getColuna() + "]");
+                            i++;
+                            Comandos(tokens);
+                            if(tokens.get(i).getSimbolo().matches("CLOSE_BRACKET")){
+                                i++;
+                                return false;
+                            }
+                            else{
+                                System.out.println("missing token CLOSE_BRACKET at "+"Posição: [" + tokens.get(i).getLexema().getLinha() + " , " + tokens.get(i).getLexema().getColuna() + "]");
+                                return true;
+                            }                          
+                        }
+                    }
+                
+                }
+            }else{
+                System.out.println("missing token OPEN_PAR at "+"Posição: [" + tokens.get(i).getLexema().getLinha() + " , " + tokens.get(i).getLexema().getColuna() + "]");
+                if(!Expressao(tokens) ){
                     if(tokens.get(i).getSimbolo().matches("CLOSE_PAR")){
                         i++;
                         if(tokens.get(i).getSimbolo().matches("OPEN_BRACKET")){
@@ -275,9 +496,7 @@ public class AnalisadorSintatico {
                         return true;
                     }
                 }
-            }else{
-                System.out.println("missing token OPEN_PAR at "+"Posição: [" + tokens.get(i).getLexema().getLinha() + " , " + tokens.get(i).getLexema().getColuna() + "]");
-                return true;
+                
             }
         }
         return true;
@@ -375,6 +594,7 @@ public class AnalisadorSintatico {
         if(tokens.get(i).getSimbolo().matches("OR")){
             i++;
             Conjuncao(tokens);
+            ExpressaoOpc(tokens);
             return false;
         }
         return true;
@@ -391,6 +611,7 @@ public class AnalisadorSintatico {
         if(tokens.get(i).getSimbolo().matches("AND")){
             i++;
             Igualdade(tokens);
+            ConjuncaoOpc(tokens);
             return false;
         }
         return true;
@@ -407,6 +628,7 @@ public class AnalisadorSintatico {
     public boolean IgualdadeOpc(ArrayList<Token> tokens){
         if(!OpIgual(tokens)){
             Relacao(tokens);
+            IgualdadeOpc(tokens);
             return true;
         }
         return true;
@@ -433,6 +655,7 @@ public class AnalisadorSintatico {
     public boolean RelacaoOpc(ArrayList<Token> tokens){
         if(!OpRel(tokens)){
             Adicao(tokens);
+            RelacaoOpc(tokens);
             return false;
         }
         return true;
@@ -465,6 +688,7 @@ public class AnalisadorSintatico {
     public boolean AdicaoOpc(ArrayList<Token> tokens){
         if(!OpAdicao(tokens)){
             Termo(tokens);
+            AdicaoOpc(tokens);
             return false;
         }
         return true;
@@ -491,6 +715,7 @@ public class AnalisadorSintatico {
     public boolean TermoOpc(ArrayList<Token> tokens){
         if(!OpMult(tokens)){
             Fator(tokens);
+            TermoOpc(tokens);
             return false;
         }
         return true;
@@ -524,8 +749,7 @@ public class AnalisadorSintatico {
                 i++;
                 return false;
             }
-        }
-        
+        }        
         return true;
     }
     
@@ -537,6 +761,9 @@ public class AnalisadorSintatico {
                 Decl2(tokens);
                 return false;
             }
+            System.out.println("missing token ID at "+"Posição: [" + tokens.get(i).getLexema().getLinha() + " , " + tokens.get(i).getLexema().getColuna() + "]");
+            i++;
+            return true;
         }
         return true;
     }

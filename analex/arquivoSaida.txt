@@ -15,123 +15,36 @@ Posição: [3 , 10]
 Token: < OPEN_BRACKET , { >
 Posição: [3 , 11]
 
-Token: < INT , int >
+Token: < WHILE , while >
 Posição: [6 , 2]
 
-Token: < ID , c >
-Posição: [6 , 6]
+Token: < OPEN_PAR , ( >
+Posição: [6 , 7]
 
-Token: < ATTR , = >
+Token: < ID , a >
 Posição: [6 , 8]
 
-Token: < INTEGER_CONST , 39860 >
-Posição: [6 , 9]
-
-Token: < SEMI , ; >
-Posição: [6 , 14]
-
-Token: < FOR , for >
-Posição: [7 , 2]
-
-Token: < OPEN_PAR , ( >
-Posição: [7 , 6]
-
-Token: < INT , int >
-Posição: [7 , 7]
-
-Token: < ID , i >
-Posição: [7 , 11]
-
-Token: < ATTR , = >
-Posição: [7 , 13]
+Token: < EQV , == >
+Posição: [6 , 8]
 
 Token: < INTEGER_CONST , 0 >
-Posição: [7 , 15]
-
-Token: < SEMI , ; >
-Posição: [7 , 16]
-
-Token: < ID , i >
-Posição: [7 , 18]
-
-Token: < LET , < >
-Posição: [7 , 20]
-
-Token: < ID , c >
-Posição: [7 , 22]
-
-Token: < SEMI , ; >
-Posição: [7 , 23]
-
-Token: < INC , ++ >
-Posição: [7 , 24]
-
-Token: < ID , i >
-Posição: [7 , 27]
+Posição: [6 , 11]
 
 Token: < CLOSE_PAR , ) >
-Posição: [7 , 28]
+Posição: [6 , 12]
 
 Token: < OPEN_BRACKET , { >
-Posição: [8 , 2]
-
-Token: < PRT , printf >
-Posição: [9 , 3]
-
-Token: < OPEN_PAR , ( >
-Posição: [9 , 9]
-
-Token: < CLOSE_PAR , ) >
-Posição: [9 , 31]
-
-Token: < SEMI , ; >
-Posição: [9 , 32]
-
-Token: < CLOSE_BRACKET , } >
-Posição: [10 , 2]
-
-Token: < IF , if >
-Posição: [11 , 2]
-
-Token: < OPEN_PAR , ( >
-Posição: [11 , 4]
-
-Token: < ID , i >
-Posição: [11 , 5]
-
-Token: < EQV , == >
-Posição: [11 , 6]
-
-Token: < INTEGER_CONST , 39860 >
-Posição: [11 , 10]
-
-Token: < CLOSE_PAR , ) >
-Posição: [11 , 15]
-
-Token: < OPEN_BRACKET , { >
-Posição: [11 , 16]
-
-Token: < ID , i >
-Posição: [12 , 3]
-
-Token: < INC , ++ >
-Posição: [12 , 3]
-
-Token: < SEMI , ; >
-Posição: [12 , 6]
-
-Token: < CLOSE_BRACKET , } >
-Posição: [13 , 2]
+Posição: [6 , 13]
 
 Token: < RTR , return >
-Posição: [14 , 2]
+Posição: [8 , 2]
 
 Token: < INTEGER_CONST , 0 >
-Posição: [14 , 9]
+Posição: [8 , 9]
 
 Token: < SEMI , ; >
-Posição: [14 , 10]
+Posição: [8 , 10]
 
 Token: < CLOSE_BRACKET , } >
-Posição: [15 , 1]
+Posição: [9 , 1]
 
