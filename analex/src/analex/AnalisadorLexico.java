@@ -5,15 +5,16 @@
  */
 package analex;
 
-import analex.Token.Lexema;
-import analex.Token.Token;
-import analex.Token.TokenIdentificador;
-import analex.Token.TokenNumeroINT;
-import analex.Token.TokenOpAnalitico;
-import analex.Token.TokenOpIncDec;
-import analex.Token.TokenOperador;
-import analex.Token.TokenPalavraReservada;
-import analex.Token.TokenSeparador;
+import main.ExpressoesRegulares;
+import tokens.Lexema;
+import tokens.Token;
+import tokens.TokenIdentificador;
+import tokens.TokenNumeroINT;
+import tokens.TokenOpAnalitico;
+import tokens.TokenOpIncDec;
+import tokens.TokenOperador;
+import tokens.TokenPalavraReservada;
+import tokens.TokenSeparador;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -66,18 +67,13 @@ public class AnalisadorLexico {
                         continue;                   
                     }
                     
-                    
-                    
                     //trata #include<>
                     if (cabeca == '#') {
                         token = "";
                         break;
                     }
                     
-                    
-                    
                     //trata espaço, tab e quebra de linha
-                    
                     if((int)cabeca == 32 || (int)cabeca == 9 || (int)cabeca == 10) {
                         if(token.length() > 0){
                             regexMatch(new Lexema(token, i + 1, (j+1) - token.length()));
@@ -85,6 +81,7 @@ public class AnalisadorLexico {
                         }
                         continue;
                     }
+
                     //separadores
                     if(cabeca == '(' || cabeca == ')' || cabeca == '{'  || cabeca == '}' || cabeca == ';' || cabeca == ',' || cabeca == '[' || cabeca == ']'){
                         if(token.length() > 0){
@@ -98,7 +95,6 @@ public class AnalisadorLexico {
                     }
                     
                     //comentario
-                    
                     if(cabeca == '/'){                             
                         ++j;
                         cabeca = linha.charAt(j);
@@ -120,9 +116,6 @@ public class AnalisadorLexico {
                             cabeca = linha.charAt(j);                         
                         }
                     }
-                    
-                    
-                    
                     
                     //literal em aspas simples
                     if(cabeca == '\''){
@@ -206,7 +199,6 @@ public class AnalisadorLexico {
                     }
                     token = token + cabeca;
                 }
-                
                 i++;
             }
         } catch (IOException ex) {
