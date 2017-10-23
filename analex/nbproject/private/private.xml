@@ -3,9 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/igor/Documents/Compiladores/analex/src/analex/Principal.java</file>
-            <file>file:/home/igor/Documents/Compiladores/analex/src/analex/Token/TokenOpIncDec.java</file>
-            <file>file:/home/igor/Documents/Compiladores/analex/src/analex/AnalisadorSintatico.java</file>
+            <file>file:/home/brunos1212/git/compiladores/analex/src/arvoresint/ArvoreSintaxe.java</file>
+            <file>file:/home/brunos1212/git/compiladores/analex/src/arvoresint/ArithOp.java</file>
+            <file>file:/home/brunos1212/git/compiladores/analex/src/analex/AnalisadorLexico.java</file>
+            <file>file:/home/brunos1212/git/compiladores/analex/src/tokens/TokenPalavraReservada.java</file>
+            <file>file:/home/brunos1212/git/compiladores/analex/src/arvoresint/Id.java</file>
+            <file>file:/home/brunos1212/git/compiladores/analex/src/arvoresint/Expr.java</file>
+            <file>file:/home/brunos1212/git/compiladores/analex/src/main/Principal.java</file>
+            <file>file:/home/brunos1212/git/compiladores/analex/src/arvoresint/While.java</file>
+            <file>file:/home/brunos1212/git/compiladores/analex/src/arvoresint/Num.java</file>
+            <file>file:/home/brunos1212/git/compiladores/analex/src/arvoresint/If.java</file>
+            <file>file:/home/brunos1212/git/compiladores/analex/src/anasint/AnalisadorSintatico.java</file>
         </group>
     </open-files>
 </project-private>

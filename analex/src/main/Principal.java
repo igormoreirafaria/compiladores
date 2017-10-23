@@ -7,6 +7,8 @@ package main;
 
 import analex.AnalisadorLexico;
 import anasint.AnalisadorSintatico;
+import arvoresint.AST;
+import arvoresint.ArvoreSintaxe;
 import tokens.Token;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -87,8 +89,11 @@ public class Principal {
         }catch(IOException ioe){
                System.out.println("erro na leitura");
         } 
-
         
+        ArvoreSintaxe a = new ArvoreSintaxe(analex.getTokens());
+        a.printaArvore();
+        a.variaveisPrograma();
     }
+    
     
 }

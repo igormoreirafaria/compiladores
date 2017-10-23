@@ -7,13 +7,14 @@ package anasint;
 
 import tokens.Token;
 import java.util.ArrayList;
-
+import arvoresint.*;
 /**
  *
  * @author igor
  */
 public class AnalisadorSintatico {
     private int i=0;
+    private AST arvore;
     
     public void Run(ArrayList<Token> tokens){
         while(i != tokens.size()){
@@ -191,7 +192,9 @@ public class AnalisadorSintatico {
     public boolean Atribuicoes(ArrayList<Token> tokens){
         
         if(tokens.get(i).getSimbolo().matches("ID")){
-            i++;
+
+            
+            i++;       
             if(tokens.get(i).getSimbolo().matches("ATTR")){
                 i++;
                 Expressao(tokens);

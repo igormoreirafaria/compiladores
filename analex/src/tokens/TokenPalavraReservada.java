@@ -23,6 +23,7 @@ public class TokenPalavraReservada extends Token {
         aMap.put("if", "IF");
         aMap.put("for", "FOR");
         aMap.put("while", "WHILE");
+        aMap.put("else","ELSE");
         aMap.put("return", "RTR");
         aMap.put("continue", "CTN");
         aMap.put("break", "BRK");
