@@ -103,7 +103,6 @@ public class ArvoreSintaxe {
         if( tokens.get(i).getSimbolo().matches("SEMI") || tokens.get(i).getSimbolo().matches("COMMA")){
             i++;
         }
-        System.out.println(" lendo " + tokens.get(i).getStringLexema());
         if( i+1 >= tokens.size()){
             return null;
         }
@@ -132,21 +131,16 @@ public class ArvoreSintaxe {
     
       public boolean Declaracoes(ArrayList<Token> tokens, AST pai){
         String a = Tipo(tokens);
-        System.out.println(" Declaracao " + a);
         if(a != null){
-            System.out.println(" Declaracao asd" + tokens.get(i).getSimbolo());
             if(tokens.get(i).getSimbolo().matches("ID")){
                 
                 if(a.equals("INT")){
                     Id.tabelaSimbolos.put(tokens.get(i).getStringLexema(), new VariavelTabela("INT"));
-                    System.out.println(" Declaracao " + tokens.get(i).getStringLexema());
                 }else if(a.equals("FLOAT")){
                     Id.tabelaSimbolos.put(tokens.get(i).getStringLexema(), new VariavelTabela("FLOAT"));
                 }
                 i++;
-                System.out.println(" ATR " + tokens.get(i).getStringLexema());
                 if(tokens.get(i).getSimbolo().matches("ATTR")){
-                     System.out.println(" ATR " + tokens.get(i).getStringLexema());
                      i--;
                     pai.setFilhos(Atribuicoes(tokens));
                     i--;
@@ -172,7 +166,6 @@ public class ArvoreSintaxe {
     }
     
     public boolean Decl2(ArrayList<Token> tokens, String a, AST pai){
-        System.out.println(" Declaracao ," + tokens.get(i).getStringLexema());
         if(tokens.get(i).getSimbolo().matches("COMMA")){
             i++;
             if(tokens.get(i).getSimbolo().matches("ID")){
@@ -180,12 +173,9 @@ public class ArvoreSintaxe {
                     Id.tabelaSimbolos.put(tokens.get(i).getStringLexema(), new VariavelTabela("INT"));
                 }else if(a.equals("FLOAT")){
                     Id.tabelaSimbolos.put(tokens.get(i).getStringLexema(), new VariavelTabela("FLOAT"));
-                    System.out.println(" Declaracao " + tokens.get(i).getStringLexema());
                 }
                 i++;
-                System.out.println(" Declaracao " + tokens.get(i).getStringLexema());
                 if(tokens.get(i).getSimbolo().matches("ATTR")){
-                    System.out.println(" ATR dc " + tokens.get(i).getStringLexema());
                     i--;
                     pai.setFilhos(Atribuicoes(tokens));   
                     i--;
@@ -202,9 +192,7 @@ public class ArvoreSintaxe {
             i++;
             if(tokens.get(i).getSimbolo().matches("OPEN_PAR")){
                 i++;
-                System.out.println("Entrei aqui1 " + tokens.get(i).getStringLexema());
                 node.setFilhos(Expressao(tokens));
-                System.out.println("Sai aqui1 " + tokens.get(i).getStringLexema());
                 if(tokens.get(i).getSimbolo().matches("CLOSE_PAR")){
                     i++;
                     return node;
