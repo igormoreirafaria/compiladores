@@ -10,14 +10,47 @@ package arvoresint;
  * @author brunos1212
  */
 public class RelOp extends Expr{
-    private boolean valor;
+
     
     public RelOp(String nome) {
         super(nome);
     }
+    public void toString(AST node) {
+        System.out.println("< RelOp='" + node.getNome() + "' >");
+        xml.add("< RelOp='" + node.getNome() + "' >");
+        for(AST x : node.getFilhos()) {
+            if(x==null)break;
+            x.toString(x);
+        }
+        System.out.println("</RelOp>");
+        xml.add("</RelOp>");
+    }
     
-    public void evaluate() {
-        
+    public float evaluate() {
+        boolean aux = true;
+        System.out.println("Avaliando " + filhos.get(0).getNome() + " " + nome + " " + filhos.get(1).getNome());
+         switch(nome) {
+             case "<":
+                 aux = filhos.get(0).evaluate() < filhos.get(1).evaluate();
+                 break;
+             case "<=":
+                 aux = filhos.get(0).evaluate()<= filhos.get(1).evaluate();
+                 break;
+             case ">":
+                 aux = filhos.get(0).evaluate() > filhos.get(1).evaluate();
+                 break;
+             case ">=":
+                 aux = filhos.get(0).evaluate() >= filhos.get(1).evaluate();
+                 break;
+             case "==":
+                 aux = filhos.get(0).evaluate() == filhos.get(1).evaluate();
+                 break;    
+         }
+         if(aux == true){
+             return 1;
+         }else {
+             return 0;
+         }
     }
     
 }

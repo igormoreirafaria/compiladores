@@ -5,15 +5,17 @@
         <group>
             <file>file:/home/brunos1212/git/compiladores/analex/src/arvoresint/ArvoreSintaxe.java</file>
             <file>file:/home/brunos1212/git/compiladores/analex/src/arvoresint/ArithOp.java</file>
-            <file>file:/home/brunos1212/git/compiladores/analex/src/analex/AnalisadorLexico.java</file>
-            <file>file:/home/brunos1212/git/compiladores/analex/src/tokens/TokenPalavraReservada.java</file>
-            <file>file:/home/brunos1212/git/compiladores/analex/src/arvoresint/Id.java</file>
-            <file>file:/home/brunos1212/git/compiladores/analex/src/arvoresint/Expr.java</file>
+            <file>file:/home/brunos1212/git/compiladores/analex/src/arvoresint/LogicalOp.java</file>
             <file>file:/home/brunos1212/git/compiladores/analex/src/main/Principal.java</file>
+            <file>file:/home/brunos1212/git/compiladores/analex/src/arvoresint/Read.java</file>
             <file>file:/home/brunos1212/git/compiladores/analex/src/arvoresint/While.java</file>
-            <file>file:/home/brunos1212/git/compiladores/analex/src/arvoresint/Num.java</file>
+            <file>file:/home/brunos1212/git/compiladores/analex/src/arvoresint/VariavelTabela.java</file>
+            <file>file:/home/brunos1212/git/compiladores/analex/src/arvoresint/Attr.java</file>
             <file>file:/home/brunos1212/git/compiladores/analex/src/arvoresint/If.java</file>
-            <file>file:/home/brunos1212/git/compiladores/analex/src/anasint/AnalisadorSintatico.java</file>
+            <file>file:/home/brunos1212/git/compiladores/analex/src/arvoresint/AST.java</file>
+            <file>file:/home/brunos1212/git/compiladores/analex/src/arvoresint/Print.java</file>
+            <file>file:/home/brunos1212/git/compiladores/analex/src/arvoresint/RelOp.java</file>
+            <file>file:/home/brunos1212/git/compiladores/analex/src/arvoresint/Num.java</file>
         </group>
     </open-files>
 </project-private>

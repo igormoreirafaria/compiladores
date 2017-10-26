@@ -91,8 +91,9 @@ public class Principal {
         } 
         
         ArvoreSintaxe a = new ArvoreSintaxe(analex.getTokens());
-        a.printaArvore();
+        a.toString(" ");
         a.variaveisPrograma();
+        a.evaluate();
     }
     
     

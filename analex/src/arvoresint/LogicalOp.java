@@ -10,14 +10,45 @@ package arvoresint;
  * @author brunos1212
  */
 public class LogicalOp extends Expr{
-    private boolean valor;
+
     
     public LogicalOp(String nome) {
         super(nome);
     }
     
-    public void evaluate() {
-        
+    public void toString(AST node) {
+        System.out.println("<LogicaOp op=" + node.getNome() + " >");
+        xml.add("<LogicaOp op=" + node.getNome() + " >");
+        for(AST x : node.getFilhos()) {
+            if(x==null)break;
+            x.toString(x);
+        }
+        System.out.println("</LogicalOp>");
+        xml.add("</LogicalOp>");
     }
     
+    public float evaluate() {
+        boolean aux;
+        System.out.println("Avaliando " + filhos.get(0).getNome() + " " + nome + " " + filhos.get(1).getNome());
+        switch(nome) {
+            case "&&":
+                aux = (filhos.get(0).evaluate() > 0) && (filhos.get(1).evaluate()>0);
+                if (aux == true){
+                    valor = 1;
+                }else {
+                    valor =  0;
+                }
+                break;
+            case "||":
+                aux = (filhos.get(0).evaluate() > 0) || (filhos.get(1).evaluate()>0);
+                if (aux == true){
+                    valor = 1;
+                }else {
+                    valor = 0;
+                }
+                break;
+        }
+        
+        return valor;
+    }
 }

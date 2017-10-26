@@ -15,9 +15,29 @@ public class If extends AST{
         super(nome);
     }
     
-    public void evaluate() {
-        
+    public void toString(AST node) {
+        System.out.println("<If>");
+        xml.add("<If>");
+        for (AST x : node.getFilhos()) {
+            if(x == null)break;
+            x.toString(x);
+        }
+        System.out.println("</If>");
+        xml.add("</If>");
     }
     
-    
+    public float evaluate() {
+        float a = filhos.get(0).evaluate();
+        System.out.println("Valor do if " + a );
+        if(filhos.size() > 1 ){
+            if( a == 1 && filhos.get(1).getNome().equals("c_true")){
+                filhos.get(1).evaluate();
+            }if( a == 0 && filhos.get(2).getNome().equals("c_false")){
+                filhos.get(2).evaluate();
+            }
+        }
+        
+        return valor;
+    }
+        
 }

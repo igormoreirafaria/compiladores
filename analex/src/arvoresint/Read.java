@@ -15,8 +15,19 @@ public class Read extends AST{
         super(nome);
     }
     
-    public void evaluate() {
-        
+    public float evaluate() {
+        return 0;
+    }
+    
+    public void toString(AST node) {
+        System.out.println("<Read>");
+        xml.add("<Read>");
+        for(AST x : node.getFilhos()){
+            if(x==null)break;
+            x.toString(x);
+        }
+        System.out.println("</Read>");
+        xml.add("</Read>");
     }
     
 }

@@ -15,7 +15,37 @@ public class ArithOp extends Expr{
         super(nome);
     }
     
-    public void evaluate() {
-        
+    public void toString(AST node) {
+        System.out.println("<ArithOp op='" + node.getNome() + "' >");
+        xml.add("< ArithOp op='" + node.getNome() + "' >");
+        for(AST x : node.getFilhos()) {
+            if(x == null)break;
+            x.toString(x);
+        }
+        System.out.println("</ArithOp>");
+        xml.add("</ArithOp>");
+    }
+    
+    public float evaluate () {
+        switch(nome){
+            case "+":
+                valor =  filhos.get(0).evaluate() + filhos.get(1).evaluate();
+                System.out.println(filhos.get(0).evaluate() + " + " +  filhos.get(1).evaluate() + " = " + valor);
+                break;
+            case "-":
+                valor = filhos.get(0).evaluate() - filhos.get(1).evaluate();
+                System.out.println(filhos.get(0).evaluate() + " - " +  filhos.get(1).evaluate() + " = " + valor);
+                break;
+            case "*":
+                valor = filhos.get(0).evaluate() * filhos.get(1).evaluate();
+                System.out.println(filhos.get(0).evaluate() + " * " +  filhos.get(1).evaluate() + " = " + valor);
+                break;
+            case "/":
+                valor = filhos.get(0).evaluate() / filhos.get(1).evaluate();
+                System.out.println(filhos.get(0).evaluate() + " / " +  filhos.get(1).evaluate() + " = " + valor);
+                break;    
+               
+        }
+        return valor;
     }
 }

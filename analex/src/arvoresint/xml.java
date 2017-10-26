@@ -9,13 +9,6 @@ package arvoresint;
  *
  * @author brunos1212
  */
-public class Expr extends AST{
-    public float valor;
-    public Expr(String nome) {
-        super(nome);
-    }
-  
-   public float setValor() {
-       return valor;
-   }
+class xml {
+    
 }

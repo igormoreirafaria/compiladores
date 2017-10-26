@@ -1,0 +1,33 @@
+<AST>
+< Attr op='=' >
+<Id lexema=x tipo=INT >
+< NUM value=0>
+</Attr>
+< Attr op='=' >
+<Id lexema=y tipo=INT >
+< NUM value=10>
+</Attr>
+< Attr op='=' >
+<Id lexema=a tipo=FLOAT >
+< NUM value=1.3>
+</Attr>
+<If>
+< RelOp='<' >
+<Id lexema=x tipo=INT >
+<Id lexema=y tipo=INT >
+</RelOp>
+</If>
+< Attr op='=' >
+<Id lexema=x tipo=INT >
+< ArithOp op='*' >
+< ArithOp op='-' >
+<Id lexema=a tipo=FLOAT >
+< NUM value=1.3>
+</ArithOp>
+<Id lexema=y tipo=INT >
+< ArithOp op='/' >
+<Id lexema=a tipo=FLOAT >
+</ArithOp>
+</ArithOp>
+</Attr>
+</AST>

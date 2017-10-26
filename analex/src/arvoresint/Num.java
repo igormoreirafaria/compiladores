@@ -15,8 +15,16 @@ public class Num extends Expr{
         super(nome);
     }
     
-    public void evaluate() {
-        
+    /**
+     *
+     * @return
+     */
+    @Override
+    public float evaluate() {
+        return Float.parseFloat(nome);
     }           
-    
+    public void toString(AST node) {
+        System.out.println("< NUM value=" + node.getNome() + ">");
+        xml.add("< NUM value=" + node.getNome() + ">");
+    }
 }

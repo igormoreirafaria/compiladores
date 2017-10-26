@@ -19,13 +19,12 @@ import tokens.TokenIdentificador;
 public class ArvoreSintaxe {
     
     private AST filho = new AST("Root");
-    private HashMap<String, VariavelTabela> tabelaSimbolos = new HashMap<>();
+    private HashMap<String, VariavelTabela> tabelaSimbolos = null;
     private int i = 4;
     
     public ArvoreSintaxe(ArrayList<Token> token){
         while(i < token.size()){ 
-            System.out.println("Lendo o token " + token.get(i).getSimbolo());
-            filho.setFilhos(Bloco(token));
+            filho.setFilhos(Bloco(token, filho));
             if(i+1 >= token.size()) {
                 break;
             }
@@ -33,36 +32,45 @@ public class ArvoreSintaxe {
         }
     }
     
+    public int evaluate () {
+        filho.evaluate();
+        return 0;
+    }
+    
+    public void toString(String node) {
+        System.out.println("<AST>");
+        filho.add("<AST>");
+        for( AST x : filho.getFilhos()) {
+            if(x==null)break;
+                x.toString(x);
+        }
+        System.out.println("</AST>");
+        filho.add("</AST>");
+        filho.save("teste1");
+    }
     public AST ComandoEnquanto(ArrayList<Token> tokens){
         While node = null; 
         
         if(tokens.get(i).getSimbolo().matches("WHILE")){
             node = new While(tokens.get(i).getSimbolo());
-            System.out.println("Criando comando " + tokens.get(i).getSimbolo());
             i++;
-            System.out.println("Criando comando " + tokens.get(i).getSimbolo());
             if(tokens.get(i).getSimbolo().matches("OPEN_PAR")){
                 i++;
                 node.setFilhos(Expressao(tokens));
                     if(tokens.get(i).getSimbolo().matches("CLOSE_PAR")){
                         i++;
                        if(tokens.get(i).getSimbolo().matches("OPEN_BRACKET")){
-                            
                            i++;
-        
-                            System.out.println("While comandos " + tokens.get(i).getSimbolo());
-                            AST a = Comando(tokens);
-                            AST b = null;
+                           AST b = new AST("c_true");
+                            AST a = Comandos(tokens, b);
+                            
                             while( a != null){
                                 if ( b == null) {
                                     b = new AST("c_true");
-                                    System.out.println("Criando o nodo while c_true b==null");
                                 }
-                               
                                 b.setFilhos(a);                                    
                                 a = Comando(tokens);
                             }
-                            System.out.println("Criando o nodo while c_true");
                             node.setFilhos(b);
                         }
                        if(tokens.get(i).getSimbolo().matches("CLOSE_BRACKET")){
@@ -75,72 +83,82 @@ public class ArvoreSintaxe {
     }
     
      public AST Comandos(ArrayList<Token> tokens, AST pai){
-        System.out.println("Cheguei em comando " + tokens.get(i).getSimbolo());
          AST node = Comando(tokens);
-         
-        if(node != null){
+          if(node != null){
             if(pai != null){
              pai.setFilhos(node);
             }
-            Comandos(tokens, pai);
-            System.out.println("Retornando o comando " + node.getNome());
-            return node;
- 
+            AST a = Comandos(tokens, pai);
+            return null;
         }
-        return null;
+         if(Declaracoes(tokens, pai)){
+             Comandos(tokens, pai);
+         }
+        return node;
     }
     
     public AST Comando(ArrayList<Token> tokens){
         AST node;
-        if( tokens.get(i).getSimbolo().matches("SEMI")){
+        
+        if( tokens.get(i).getSimbolo().matches("SEMI") || tokens.get(i).getSimbolo().matches("COMMA")){
             i++;
         }
+        System.out.println(" lendo " + tokens.get(i).getStringLexema());
         if( i+1 >= tokens.size()){
             return null;
         }
-        node = Bloco(tokens);
+        node = Bloco(tokens, null);
         if(node != null){
             return node;
         }
-        Declaracoes(tokens);
         node = Atribuicoes(tokens); 
         if(node != null){
-            return node;
+             return node;
         }
         node = ComandoSe(tokens);
         if(node != null) {
             return node;
         }
         node = ComandoEnquanto(tokens);
-        if(node != null) return node;
-//        node = LeituraEscrita(tokens));
-//        if(node != null) return node;
+        if(node != null){
+            return node;
+        }
+        node = LeituraEscrita(tokens);
+        if(node != null){
+            return node;
+        }
         return null;
     }
     
-      public boolean Declaracoes(ArrayList<Token> tokens){
+      public boolean Declaracoes(ArrayList<Token> tokens, AST pai){
         String a = Tipo(tokens);
-        System.out.println("Entrando em declaraçoes" + a);
+        System.out.println(" Declaracao " + a);
         if(a != null){
+            System.out.println(" Declaracao asd" + tokens.get(i).getSimbolo());
             if(tokens.get(i).getSimbolo().matches("ID")){
-                System.out.println("Entrando em declaraçoes" + a);
+                
                 if(a.equals("INT")){
-                    tabelaSimbolos.put(tokens.get(i).getStringLexema(), new VariavelTabela<String, Integer>("INT"));
-                    System.out.println("Criando a variavel INT " + tokens.get(i).getStringLexema());
-                    
+                    Id.tabelaSimbolos.put(tokens.get(i).getStringLexema(), new VariavelTabela("INT"));
+                    System.out.println(" Declaracao " + tokens.get(i).getStringLexema());
                 }else if(a.equals("FLOAT")){
-                    tabelaSimbolos.put(tokens.get(i).getStringLexema(), new VariavelTabela<String, Float>("FLOAT"));
-                    System.out.println("Criando a variavel FLOAT " + tokens.get(i).getStringLexema());
+                    Id.tabelaSimbolos.put(tokens.get(i).getStringLexema(), new VariavelTabela("FLOAT"));
                 }
                 i++;
-                Decl2(tokens, a);
-                i++;
-                return false;
-            }else { 
+                System.out.println(" ATR " + tokens.get(i).getStringLexema());
+                if(tokens.get(i).getSimbolo().matches("ATTR")){
+                     System.out.println(" ATR " + tokens.get(i).getStringLexema());
+                     i--;
+                    pai.setFilhos(Atribuicoes(tokens));
+                    i--;
+                    
+                }
+                Decl2(tokens, a, pai);
                 return true;
             }
+            return false;
         }
-        return true;
+
+        return false;
     }
       
       public String Tipo(ArrayList<Token> tokens){
@@ -153,34 +171,65 @@ public class ArvoreSintaxe {
         return null;
     }
     
-    public boolean Decl2(ArrayList<Token> tokens, String a){
+    public boolean Decl2(ArrayList<Token> tokens, String a, AST pai){
+        System.out.println(" Declaracao ," + tokens.get(i).getStringLexema());
         if(tokens.get(i).getSimbolo().matches("COMMA")){
             i++;
             if(tokens.get(i).getSimbolo().matches("ID")){
-                System.out.println("Entrando em declaraçoes" + a);
                 if(a.equals("INT")){
-                    tabelaSimbolos.put(tokens.get(i).getStringLexema(), new VariavelTabela<String, Integer>("INT"));
-                    System.out.println("Criando a variavel INT " + tokens.get(i).getStringLexema());
-                    
-                }else if(a.equals("FLOAR")){
-                    tabelaSimbolos.put(tokens.get(i).getStringLexema(), new VariavelTabela<String, Float>("FLOAT"));
-                    System.out.println("Criando a variavel FLOAT " + tokens.get(i).getStringLexema());
+                    Id.tabelaSimbolos.put(tokens.get(i).getStringLexema(), new VariavelTabela("INT"));
+                }else if(a.equals("FLOAT")){
+                    Id.tabelaSimbolos.put(tokens.get(i).getStringLexema(), new VariavelTabela("FLOAT"));
+                    System.out.println(" Declaracao " + tokens.get(i).getStringLexema());
                 }
                 i++;
-                Decl2(tokens, a);
-
+                System.out.println(" Declaracao " + tokens.get(i).getStringLexema());
+                if(tokens.get(i).getSimbolo().matches("ATTR")){
+                    System.out.println(" ATR dc " + tokens.get(i).getStringLexema());
+                    i--;
+                    pai.setFilhos(Atribuicoes(tokens));   
+                    i--;
+                }
+                Decl2(tokens, a, pai);
                 return true;
             }
         }
         return false;
     }
+    public AST LeituraEscrita(ArrayList<Token> tokens){
+        if(tokens.get(i).getSimbolo().matches("PRT")){
+            Print node = new Print("print");
+            i++;
+            if(tokens.get(i).getSimbolo().matches("OPEN_PAR")){
+                i++;
+                System.out.println("Entrei aqui1 " + tokens.get(i).getStringLexema());
+                node.setFilhos(Expressao(tokens));
+                System.out.println("Sai aqui1 " + tokens.get(i).getStringLexema());
+                if(tokens.get(i).getSimbolo().matches("CLOSE_PAR")){
+                    i++;
+                    return node;
+                }
+
+            }
+        }else if(tokens.get(i).getSimbolo().matches("SCF")){
+            Read node = new Read("scanf");
+            i++;
+            if(tokens.get(i).getSimbolo().matches("OPEN_PAR")){
+                i++;
+                node.setFilhos(Fator(tokens));
+                if(tokens.get(i).getSimbolo().matches("CLOSE_PAR")){
+                    i++;
+                    return node;
+                }
+            }
+        }
+        return null;
+    }
 
     public AST ComandoSe(ArrayList<Token> tokens){
         If node = null;
-        System.out.println("Entrando no if " + tokens.get(i).getSimbolo());
         if(tokens.get(i).getSimbolo().matches("IF")){
             node = new If("if");
-            System.out.println("Criando o nodo if");
             i++;
             if(tokens.get(i).getSimbolo().matches("OPEN_PAR")){
                 i++;
@@ -189,30 +238,23 @@ public class ArvoreSintaxe {
                     i++;
                     if(tokens.get(i).getSimbolo().matches("OPEN_BRACKET")){
                         i++;
-                        System.out.println(" O que tem nessa porra " + tokens.get(i).getSimbolo());
-                        AST a = Comandos(tokens, null);
-                        if(a != null) {
-                            AST b = new AST("c_true");
-                            b.setFilhos(a);
-                            System.out.println("Criando nodo IF c_true " + tokens.get(i).getSimbolo());
-                            node.setFilhos(b);
-                        } else {
-                            System.out.println("a == null");
-                        }
+                        AST b = new AST("c_true");
+                        Comandos(tokens, b);
+                        node.setFilhos(b);
                     }
                     if(tokens.get(i).getSimbolo().matches("CLOSE_BRACKET")){
                         i++;
-                        System.out.println(" Else " + tokens.get(i).getSimbolo());
-                        
-                        AST c = ComandoSeNao(tokens);
-                        if (c != null) {
-                            AST d = new AST("c_false");
-                            System.out.println("Criando o nodo if c_false");
-                            d.setFilhos(c);
+                        AST d = new AST("c_false");
+                        if(ComandoSeNao(tokens, d)) {
                             node.setFilhos(d);
-                        }else {
-                            System.out.println("Else null");
-                        }  
+                        }
+//                        if (c != null) {
+//                            d.setFilhos(c);
+//                            node.setFilhos(d);
+//                            return node;
+//                        } else {
+//                            System.out.println("ELSE NULL PORRA");
+//                        }
                     }
                 }
             }
@@ -220,34 +262,34 @@ public class ArvoreSintaxe {
         return node;
     }
     
-    public AST ComandoSeNao(ArrayList<Token> tokens){
-        System.out.println("Comando se nao " + tokens.get(i).getSimbolo());
+    public boolean ComandoSeNao(ArrayList<Token> tokens, AST pai){
         if(tokens.get(i).getSimbolo().matches("ELSE")){
             i++;
-            System.out.println("Entrei no else." + tokens.get(i).getSimbolo());
-            AST node = Comando(tokens);
-            return node;
+            if(tokens.get(i).getSimbolo().matches("OPEN_BRACKET")){
+                i++;
+                Comandos(tokens, pai);
+                if(tokens.get(i).getSimbolo().matches("CLOSE_BRACKET")){
+                    i++;
+                    return true;
+                }
+            }else if(tokens.get(i).getSimbolo().matches("IF")) {
+                pai.setFilhos(ComandoSe(tokens));
+                return true;
+            }
         }
-        return null;
+        return false;
     }
     
-    public AST Bloco(ArrayList<Token> tokens){
-        System.out.println("Entrando no bloco " + tokens.get(i).getSimbolo());
+    public AST Bloco(ArrayList<Token> tokens, AST pai){
         if(tokens.get(i).getSimbolo().matches("OPEN_BRACKET")){
-             System.out.println("-------------------------------------- " + tokens.get(i).getSimbolo());
             i++;
-            System.out.println("AQUI " + tokens.get(i).getSimbolo());
             AST node;
-            node = Comandos(tokens, filho);
+            node = Comandos(tokens, pai);
             if(tokens.get(i).getSimbolo().matches("RTR")){
                 i+=2;
             }
-            System.out.println("-------------------------------------- " + tokens.get(i).getSimbolo());
-            System.out.println("Saindo do bloco " + tokens.get(i).getSimbolo());
-            i++;
             if(tokens.get(i).getSimbolo().matches("CLOSE_BRACKET")){
-                 System.out.println("-------------------------------------- " + tokens.get(i).getSimbolo());
-             System.out.println("Saindo do bloco " + tokens.get(i).getSimbolo());
+                i++;
              return node;
             }
         }
@@ -255,15 +297,12 @@ public class ArvoreSintaxe {
     }
     
     public AST Atribuicoes(ArrayList<Token> tokens){
-        System.out.println("Entrando no nodo ATTR " + tokens.get(i-1).getSimbolo());
         Attr node = null;
-        if(tokens.get(i).getSimbolo().matches("ID")){    
-            AST id = new AST(tokens.get(i).getStringLexema());
-            System.out.println("Crianod o nodo ID " + tokens.get(i).getStringLexema());
+        if(tokens.get(i).getSimbolo().matches("ID")){ 
+            Id id = new Id(tokens.get(i).getStringLexema());
             i++;
             if(tokens.get(i).getSimbolo().matches("ATTR")){
                 node = new Attr("=");
-                System.out.println("Criando Nodo ATTR "+ tokens.get(i).getStringLexema());
                 node.setFilhos(id);
                 i++;
                 AST e = Expressao(tokens);
@@ -271,6 +310,8 @@ public class ArvoreSintaxe {
                     node.setFilhos(e);
                 }
                 i++; 
+            }else{ 
+                i++;
             }
         }
         return node;
@@ -280,7 +321,6 @@ public class ArvoreSintaxe {
         Expr conjuncao = Conjuncao(tokens);
         Expr node = ExpressaoOpc(tokens, conjuncao);
         if(node == null) {
-            System.out.println("retornando termo");
             return conjuncao;
             
         }
@@ -289,7 +329,6 @@ public class ArvoreSintaxe {
     public Expr ExpressaoOpc(ArrayList<Token> tokens, Expr conjuncao){
         if(tokens.get(i).getSimbolo().matches("OR")){
             LogicalOp node = new LogicalOp(tokens.get(i).getStringLexema());
-            System.out.println("Criando um nodo OR");
             node.setFilhos(conjuncao);
             i++;
             conjuncao = Conjuncao(tokens);
@@ -316,7 +355,6 @@ public class ArvoreSintaxe {
             if( igualdade != null){
                 node.setFilhos(igualdade);
             }
-            System.out.println("Criando um nodo AND");
             i++;
             Expr igual = Igualdade(tokens);
             if( igual != null){
@@ -334,7 +372,6 @@ public class ArvoreSintaxe {
         Expr relacao = Relacao(tokens);
         Expr node = (IgualdadeOpc(tokens, relacao));
         if( node == null) {
-            System.out.println("retornando termo");
             return relacao;
         }
         return node;
@@ -358,11 +395,9 @@ public class ArvoreSintaxe {
         RelOp node = null;
         if(tokens.get(i).getSimbolo().matches("EQV")){
             node = new RelOp(tokens.get(i).getStringLexema());
-            System.out.println("Criando um nodo Equivalente");
             i++;
         }else if(tokens.get(i).getSimbolo().matches("DIFF")){
             node = new RelOp(tokens.get(i).getStringLexema());
-            System.out.println("Criando um nodo Diferente");
             i++;
         }
         return node;
@@ -395,19 +430,15 @@ public class ArvoreSintaxe {
         RelOp node = null;
         if(tokens.get(i).getSimbolo().matches("LET")){
              node = new RelOp(tokens.get(i).getStringLexema());
-             System.out.println("Criando um nodo LET" + tokens.get(i).getStringLexema());
             i++;
         }else if(tokens.get(i).getSimbolo().matches("LTE")){
             node = new RelOp(tokens.get(i).getStringLexema());
-            System.out.println("Criando um nodo LTE" + tokens.get(i).getStringLexema());
             i++;
         }else if(tokens.get(i).getSimbolo().matches("GRT")){
             node = new RelOp(tokens.get(i).getStringLexema());
-            System.out.println("Criando um nodo GRT" + tokens.get(i).getStringLexema());
             i++;
         }else if(tokens.get(i).getSimbolo().matches("GTE")){
             node = new RelOp(tokens.get(i).getStringLexema());
-            System.out.println("Criando um nodo GTE" + tokens.get(i).getStringLexema());
             i++;
         }
         return node;
@@ -417,7 +448,6 @@ public class ArvoreSintaxe {
         Expr termo = Termo(tokens);
         ArithOp node = AdicaoOpc(tokens, termo);
         if (node == null) {
-            System.out.println("retornando termo");
             return termo;
         }
   
@@ -446,14 +476,11 @@ public class ArvoreSintaxe {
     
     public ArithOp OpAdicao(ArrayList<Token> tokens){
         ArithOp node = null;
-        System.out.println("Entrei 1 " + tokens.get(i).getStringLexema());
         if(tokens.get(i).getSimbolo().matches("ADD")){
             node = new ArithOp(tokens.get(i).getStringLexema());
-            System.out.println("Criando um nodo +.");
             i++;
         }else if(tokens.get(i).getSimbolo().matches("SUB")){
             node = new ArithOp(tokens.get(i).getStringLexema());
-            System.out.println("Criando um nodo -");
             i++;
         }
         return node;
@@ -462,7 +489,6 @@ public class ArvoreSintaxe {
         Expr termo = Fator(tokens);
         Expr node = TermoOpc(tokens, termo);
         if( node == null) {
-            System.out.println("retornando termo");
             return termo;
         }
         return node;
@@ -471,6 +497,7 @@ public class ArvoreSintaxe {
     public Expr TermoOpc(ArrayList<Token> tokens, AST termo){
         Expr node;
         node = OpMult(tokens);
+        
         if(node == null){
             return null;
         }
@@ -489,29 +516,25 @@ public class ArvoreSintaxe {
         ArithOp node = null;
         if(tokens.get(i).getSimbolo().matches("MUL")){
             node = new ArithOp(tokens.get(i).getStringLexema());
-            System.out.println("Criando o nodo MULT");
             i++;
         }else if(tokens.get(i).getSimbolo().matches("DIV")){
             node = new ArithOp(tokens.get(i).getStringLexema());
-            System.out.println("Criando o nodo DIV");
             i++;
         }
         return node;
     }
     public Expr Fator(ArrayList<Token> tokens){
+        
         if(tokens.get(i).getSimbolo().matches("ID")){
             Id node = new Id(tokens.get(i).getStringLexema());
-            System.out.println("Criando o nodo ID " + tokens.get(i).getStringLexema());
             i++;
             return node;
         }else if(tokens.get(i).getSimbolo().matches("INTEGER_CONST")){
             Num node = new Num(tokens.get(i).getStringLexema());
-            System.out.println("Criando o nodo NUM_INT " + tokens.get(i).getStringLexema());
             i++;
             return node;
         }else if(tokens.get(i).getSimbolo().matches("FLOAT_CONST")){
             Num node = new Num(tokens.get(i).getStringLexema());
-            System.out.println("Criando o nodo NUM_FLOAT " + tokens.get(i).getStringLexema());
             i++;
             return node;
         }else if(tokens.get(i).getSimbolo().matches("OPEN_PAR")){
@@ -566,15 +589,11 @@ public class ArvoreSintaxe {
     }
     
     public void variaveisPrograma(){
-        Set<String> a = tabelaSimbolos.keySet();
+        Set<String> a = Id.tabelaSimbolos.keySet();
         
         for(String x : a){
-            System.out.println(x + " " + tabelaSimbolos.get(x).toString());
+            System.out.println(x + " " + Id.tabelaSimbolos.get(x).toString());
             
         }
     }
-    public void evaluate() {
-        
-    }
-    
 }

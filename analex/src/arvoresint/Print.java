@@ -15,8 +15,15 @@ public class Print extends AST{
         super(nome);
     }
     
-    public void evaluate() {
-        
+    public void toString(AST node) {
+        System.out.println("<Print>");
+        xml.add("<Print>");
+        for( AST x : node.getFilhos()) {
+            if(x == null)break;
+            x.toString(x);
+        }
+        System.out.println("</Print>");
+        xml.add("</Print>");
     }
     
 }

@@ -9,22 +9,25 @@ package arvoresint;
  *
  * @author brunos1212
  */
-public class VariavelTabela <K, J>{
-    private K tipo;
-    private J valor;
+public class VariavelTabela {
+    private String tipo;
+    private float valor;
 
-    public VariavelTabela(K tipo){
+    public VariavelTabela(String tipo){
         this.tipo = tipo;
     }
     
-    public void setValor(J valor){
+    public void setValor(float valor){
         this.valor = valor;
     }
     
-    public J getValor(){
+    public float getValor(){
         return valor;
     }
     
+    public String getTipo(){
+        return tipo;
+    }
     public String toString() {
         return " " + valor;
     }
