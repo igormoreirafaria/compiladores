@@ -12,7 +12,7 @@ package main;
 public interface ExpressoesRegulares {
     public static final String regexFLOAT = "\\d+\\.\\d+";
     public static final String regexINT = "\\d+";
-    public static final String regexPalavrasReservadas = "printf|char|void|int|float|double|if|else|for|while|return|continue|break|scanf|main";
+    public static final String regexPalavrasReservadas = "print|char|void|int|float|double|if|else|for|while|return|continue|break|read|main";
     public static final String regexSeparadores = ";|\\[|\\]|\\(|\\)|\\{|\\}|,";
     public static final String regexOperadoresAritmeticos = "\\^|\\+|-|/|\\*|=";
     public static final String regexOperadorIncremento = "\\+\\+|\\-\\-";
