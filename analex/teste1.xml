@@ -18,7 +18,11 @@
 < While=WHILE >
 < RelOp='>' >
 <Id lexema=y tipo=INT >
+<<<<<<< HEAD
 < NUM value=1>
+=======
+<Id lexema=x tipo=INT >
+>>>>>>> 88e1cdab6968367d33cee19ec71c97e15684866b
 </RelOp>
 < c_true>
 < Attr op='=' >
@@ -51,11 +55,21 @@
 <Id lexema=z tipo=FLOAT >
 </Print>
 <Print>
+<<<<<<< HEAD
 < ArithOp op='-' >
 < ArithOp op='/' >
 <Id lexema=x tipo=INT >
 </ArithOp>
 <Id lexema=y tipo=INT >
 </ArithOp>
+=======
+< ArithOp op='/' >
+<Id lexema=x tipo=INT >
+< ArithOp op='-' >
+<Id lexema=z tipo=FLOAT >
+<Id lexema=y tipo=INT >
+</ArithOp>
+</ArithOp>
+>>>>>>> 88e1cdab6968367d33cee19ec71c97e15684866b
 </Print>
 </AST>

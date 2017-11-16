@@ -81,7 +81,11 @@ Posição: [5 , 10]
 Token: < GRT , > >
 Posição: [5 , 12]
 
+<<<<<<< HEAD
 Token: < INTEGER_CONST , 1 >
+=======
+Token: < ID , x >
+>>>>>>> 88e1cdab6968367d33cee19ec71c97e15684866b
 Posição: [5 , 14]
 
 Token: < CLOSE_PAR , ) >
@@ -147,6 +151,7 @@ Posição: [9 , 14]
 Token: < CLOSE_BRACKET , } >
 Posição: [10 , 3]
 
+<<<<<<< HEAD
 Token: < PRT , print >
 Posição: [11 , 3]
 
@@ -203,6 +208,70 @@ Posição: [13 , 18]
 
 Token: < SEMI , ; >
 Posição: [13 , 19]
+=======
+Token: < PRT , printf >
+Posição: [11 , 3]
+
+Token: < OPEN_PAR , ( >
+Posição: [11 , 9]
+
+Token: < ID , x >
+Posição: [11 , 10]
+
+Token: < CLOSE_PAR , ) >
+Posição: [11 , 11]
+
+Token: < SEMI , ; >
+Posição: [11 , 12]
+
+Token: < PRT , printf >
+Posição: [12 , 3]
+
+Token: < OPEN_PAR , ( >
+Posição: [12 , 9]
+
+Token: < ID , z >
+Posição: [12 , 10]
+
+Token: < CLOSE_PAR , ) >
+Posição: [12 , 11]
+
+Token: < SEMI , ; >
+Posição: [12 , 12]
+
+Token: < PRT , printf >
+Posição: [13 , 3]
+
+Token: < OPEN_PAR , ( >
+Posição: [13 , 9]
+
+Token: < ID , x >
+Posição: [13 , 10]
+
+Token: < DIV , / >
+Posição: [13 , 11]
+
+Token: < OPEN_PAR , ( >
+Posição: [13 , 12]
+
+Token: < ID , z >
+Posição: [13 , 13]
+
+Token: < SUB , - >
+Posição: [13 , 15]
+
+Token: < ID , y >
+Posição: [13 , 17]
+
+Token: < CLOSE_PAR , ) >
+Posição: [13 , 18]
+
+Token: < CLOSE_PAR , ) >
+Posição: [13 , 19]
+
+Token: < SEMI , ; >
+Posição: [13 , 20]
+>>>>>>> 88e1cdab6968367d33cee19ec71c97e15684866b
 
 Token: < CLOSE_BRACKET , } >
 Posição: [14 , 1]

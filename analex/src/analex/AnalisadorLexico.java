@@ -162,11 +162,13 @@ public class AnalisadorLexico {
                             token = "";
                         }
                         else{
-                            regexMatch(new Lexema(token, i + 1, (j+1) - token.length()));
+                            --j;
+                            cabeca = linha.charAt(j);
+                            /*regexMatch(new Lexema(token, i + 1, (j+1) - token.length()));
                             token = "";
                             if((int)cabeca != 32 && (int)cabeca != 9 && (int)cabeca != 10) {
                                 token = token + cabeca;
-                            }
+                            }*/
                         }
                         continue;
                     }
