@@ -52,5 +52,15 @@ public class RelOp extends Expr{
              return 0;
          }
     }
+
+    public void generateBranchCode (){
+         filhos.get(0).generateBranchCode();
+         filhos.get(1).generateBranchCode() ;
+         System.out.println( this.filhos.get(0).getNome()+ " = " + filhos.get(1).getAddress().getName());
+    }
+    public Operand getAddress() {
+        return address;
+    }   
+
     
 }
