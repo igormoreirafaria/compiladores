@@ -1,13 +1,11 @@
 #include <stdio.h>
 
 int main(){
-	int a;
-	a = 1 && 1;	
-	if ( 1 && 1 ) {
-		a = 1 + 1;	
+	int z, x, y;
+	if(x + y|| z) {
+		z = 1;
 	}else {
-		a = 2 + 2;
-	}	
-
+		z = 0;
+	}
 	return 0;
 }

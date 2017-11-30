@@ -52,14 +52,14 @@ public class LogicalOp extends Expr{
     }
     public void generateBranchCode() {
         if(nome.equals("||")) {
-            filhos.get(0).true_label = new Label();
+            filhos.get(0).true_label = true_label;
             filhos.get(0).false_label = new Label();
             filhos.get(1).true_label = true_label;
             filhos.get(1).false_label = false_label;
             
             filhos.get(0).generateBranchCode();
             if(filhos.get(0).getAddress() != null) {
-                System.out.println("if " + filhos.get(0).getAddress().getName() + " != 1 goto " + filhos.get(0).false_label.getName());
+                System.out.println("if " + filhos.get(0).getAddress().getName() + " != 1 goto " + filhos.get(0).true_label.getName());
             }else {
                 System.out.println(filhos.get(0).false_label.getName() +  ":" );
             }
@@ -98,19 +98,22 @@ public class LogicalOp extends Expr{
         address = new Operand();
         address.setTemporary(new Temp());
         address.setName(address.getTemporary().getName());
-        if(nome.equals("&&")) {
+        if(nome.equals("||")) {
             filhos.get(0).false_label = new Label();
             
             filhos.get(0).generateBranchCode();
             
             System.out.println("if " + filhos.get(0).getAddress().getName() + " != 1 goto " + filhos.get(0).false_label.getName());
-            
-            System.out.println( address.getName() + " = 1");
            
+            System.out.println( address.getName() + " = 1");
+            System.out.println("goto " + next.getName());
+            System.out.println(filhos.get(0).false_label.getName() + ":");
+            
             filhos.get(1).generateBranchCode();    
             System.out.println("if " + filhos.get(1).getAddress().getName() + " == 0 goto " + next.getName());
             System.out.println( address.getName() + " = 0");
-        }else if(nome.equals("||")) {
+            System.out.println(next.getName() + ":");
+        }else if(nome.equals("&&")) {
             filhos.get(0).false_label = new Label();
             
             filhos.get(0).generateBranchCode();
@@ -118,15 +121,16 @@ public class LogicalOp extends Expr{
             System.out.println("if " + filhos.get(0).getAddress().getName() + " == 0 goto " + filhos.get(0).false_label.getName());
             
             System.out.println( address.getName() + " = 0");
-           
+            System.out.println("goto " + next.getName());
+            System.out.println(filhos.get(0).false_label.getName() + ":");
+            
             filhos.get(1).generateBranchCode();    
             System.out.println("if " + filhos.get(1).getAddress().getName() + " == 0 goto " + next.getName());
             System.out.println( address.getName() + " = 1");
+            System.out.println(next.getName() + ":");
         }
     }
-    public void generateCode() {
-        generateBranchCode();
-    }
+    @Override
     public Operand getAddress() {
         return address;
     }
