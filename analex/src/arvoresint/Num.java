@@ -10,7 +10,7 @@ package arvoresint;
  * @author brunos1212
  */
 public class Num extends Expr{
-    public String adress;
+
     public Num(String nome) {
         super(nome);
     }
@@ -27,5 +27,17 @@ public class Num extends Expr{
         System.out.println("< NUM value=" + node.getNome() + ">");
         xml.add("< NUM value=" + node.getNome() + ">");
     }
-    
+    public void generateCode(){
+        if(address == null) {
+            address = new Operand();
+            address.setName(nome);
+        }
+    }
+    public void generateBranchCode() {
+        generateCode();
+    }
+    public void generateRValueCode() {
+        generateCode();
+    }
+          
 }

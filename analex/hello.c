@@ -1,8 +1,8 @@
 #include <stdio.h>
 
 int main(){
-
-	printf(x/(z - y));
+	int a;
+	a = 1 + 1;
 
 	return 0;
 }

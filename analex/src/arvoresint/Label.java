@@ -9,7 +9,7 @@ package arvoresint;
  *
  * @author brunos1212
  */
-public class Label {
+public class Label extends Operand{
     private static int n;
     private String name;
     
@@ -17,5 +17,7 @@ public class Label {
         name = "L" + n;
         n++;
     }
-    
+    public String getName() {
+        return name;
+    }
 }

@@ -9,17 +9,16 @@ package arvoresint;
  *
  * @author brunos1212
  */
-public class Expr extends AST{
-    public float valor;
-    public Operand address;
+public class Temp {
+    private static int n;
+    private String name;
     
-    public Expr(String nome) {
-        super(nome);
+    public Temp() {
+        name = "T" + n;
+        n++;
     }
-  
-   public float setValor() {
-       return valor;
-   }
-   
-   
+    
+    public String getName() {
+        return name;
+    }
 }

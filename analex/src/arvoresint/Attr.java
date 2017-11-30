@@ -32,5 +32,17 @@ public class Attr extends AST{
         return valor;
     }
     
+    public void generateCode () {
+        filhos.get(0).generateRValueCode();
+        filhos.get(1).generateRValueCode();
+        if(filhos.get(1).getTemporary() == null) {
+            System.out.println("NULL");
+        }
+        filhos.get(0).setTemporary(filhos.get(1).getTemporary());
+        
+        System.out.println(filhos.get(0).getNome() );
+        System.out.println(" = " + filhos.get(1).getAddress().getName());
+        
+    }
     
 }

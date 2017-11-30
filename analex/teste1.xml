@@ -1,75 +1,9 @@
 <AST>
 < Attr op='=' >
-<Id lexema=x tipo=INT >
+<Id lexema=a tipo=INT >
+< ArithOp op='+' >
 < NUM value=1>
-</Attr>
-< Attr op='=' >
-<Id lexema=y tipo=INT >
-< NUM value=10>
-</Attr>
-< Attr op='=' >
-<Id lexema=a tipo=FLOAT >
-< NUM value=2>
-</Attr>
-< Attr op='=' >
-<Id lexema=z tipo=FLOAT >
-< NUM value=1000>
-</Attr>
-< While=WHILE >
-< RelOp='>' >
-<Id lexema=y tipo=INT >
-<<<<<<< HEAD
-< NUM value=1>
-=======
-<Id lexema=x tipo=INT >
->>>>>>> 88e1cdab6968367d33cee19ec71c97e15684866b
-</RelOp>
-< c_true>
-< Attr op='=' >
-<Id lexema=y tipo=INT >
-< ArithOp op='-' >
-<Id lexema=y tipo=INT >
 < NUM value=1>
 </ArithOp>
 </Attr>
-< Attr op='=' >
-<Id lexema=x tipo=INT >
-< ArithOp op='*' >
-<Id lexema=x tipo=INT >
-< NUM value=2>
-</ArithOp>
-</Attr>
-< Attr op='=' >
-<Id lexema=z tipo=FLOAT >
-< ArithOp op='/' >
-<Id lexema=z tipo=FLOAT >
-<Id lexema=x tipo=INT >
-</ArithOp>
-</Attr>
-</c_true>
-</While>
-<Print>
-<Id lexema=x tipo=INT >
-</Print>
-<Print>
-<Id lexema=z tipo=FLOAT >
-</Print>
-<Print>
-<<<<<<< HEAD
-< ArithOp op='-' >
-< ArithOp op='/' >
-<Id lexema=x tipo=INT >
-</ArithOp>
-<Id lexema=y tipo=INT >
-</ArithOp>
-=======
-< ArithOp op='/' >
-<Id lexema=x tipo=INT >
-< ArithOp op='-' >
-<Id lexema=z tipo=FLOAT >
-<Id lexema=y tipo=INT >
-</ArithOp>
-</ArithOp>
->>>>>>> 88e1cdab6968367d33cee19ec71c97e15684866b
-</Print>
 </AST>

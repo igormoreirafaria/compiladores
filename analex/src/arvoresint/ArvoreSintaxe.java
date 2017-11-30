@@ -34,6 +34,7 @@ public class ArvoreSintaxe {
     
     public int evaluate () {
         filho.evaluate();
+        filho.generateCode();
         return 0;
     }
     

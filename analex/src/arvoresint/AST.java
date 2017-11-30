@@ -23,11 +23,13 @@ import javax.swing.filechooser.FileView;
  *
  * @author brunos1212
  */
-public class AST {
+public class AST extends Operand{
     String nome; //nome do lexema, <, a, num
     ArrayList<AST> filhos = new ArrayList<>(); // filhos do nodo
     private String tipo; // id, expr, if
     float valor;
+    Operand address;
+    
     static ArrayList<String> xml = new ArrayList<String>();
     
     public AST(String nome) {
@@ -98,9 +100,20 @@ public class AST {
         fileW.close();
         }catch (IOException e){
             
+        }        
+    }
+    public void generateCode () {
+        for(AST x : filhos) {
+            if(x==null)break;
+            x.generateCode();
         }
+    }
+    
+    public void generateRValueCode(){
         
-        
-        
+    }
+    
+    public Operand getAddress() {
+        return address;
     }
 }

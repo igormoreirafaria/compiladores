@@ -1,278 +1,56 @@
 --- Lista de Tokens: ---
 
 Token: < INT , int >
-Posição: [1 , 1]
+Posição: [3 , 1]
 
 Token: < MAIN , main >
-Posição: [1 , 5]
+Posição: [3 , 5]
 
 Token: < OPEN_PAR , ( >
-Posição: [1 , 9]
-
-Token: < CLOSE_PAR , ) >
-Posição: [1 , 10]
-
-Token: < OPEN_BRACKET , { >
-Posição: [2 , 1]
-
-Token: < INT , int >
-Posição: [3 , 3]
-
-Token: < ID , x >
-Posição: [3 , 7]
-
-Token: < ATTR , = >
 Posição: [3 , 9]
 
-Token: < INTEGER_CONST , 1 >
-Posição: [3 , 11]
-
-Token: < COMMA , , >
-Posição: [3 , 12]
-
-Token: < ID , y >
-Posição: [3 , 14]
-
-Token: < ATTR , = >
-Posição: [3 , 16]
-
-Token: < INTEGER_CONST , 10 >
-Posição: [3 , 18]
-
-Token: < SEMI , ; >
-Posição: [3 , 20]
-
-Token: < FLOAT , float >
-Posição: [4 , 3]
-
-Token: < ID , a >
-Posição: [4 , 9]
-
-Token: < ATTR , = >
-Posição: [4 , 11]
-
-Token: < INTEGER_CONST , 2 >
-Posição: [4 , 13]
-
-Token: < COMMA , , >
-Posição: [4 , 14]
-
-Token: < ID , z >
-Posição: [4 , 16]
-
-Token: < ATTR , = >
-Posição: [4 , 18]
-
-Token: < INTEGER_CONST , 1000 >
-Posição: [4 , 20]
-
-Token: < SEMI , ; >
-Posição: [4 , 24]
-
-Token: < WHILE , while >
-Posição: [5 , 3]
-
-Token: < OPEN_PAR , ( >
-Posição: [5 , 9]
-
-Token: < ID , y >
-Posição: [5 , 10]
-
-Token: < GRT , > >
-Posição: [5 , 12]
-
-<<<<<<< HEAD
-Token: < INTEGER_CONST , 1 >
-=======
-Token: < ID , x >
->>>>>>> 88e1cdab6968367d33cee19ec71c97e15684866b
-Posição: [5 , 14]
-
 Token: < CLOSE_PAR , ) >
-Posição: [5 , 15]
+Posição: [3 , 10]
 
 Token: < OPEN_BRACKET , { >
-Posição: [6 , 3]
+Posição: [3 , 11]
 
-Token: < ID , y >
-Posição: [7 , 5]
+Token: < INT , int >
+Posição: [4 , 2]
+
+Token: < ID , a >
+Posição: [4 , 6]
+
+Token: < SEMI , ; >
+Posição: [4 , 7]
+
+Token: < ID , a >
+Posição: [5 , 2]
 
 Token: < ATTR , = >
-Posição: [7 , 7]
-
-Token: < ID , y >
-Posição: [7 , 9]
-
-Token: < SUB , - >
-Posição: [7 , 11]
+Posição: [5 , 4]
 
 Token: < INTEGER_CONST , 1 >
-Posição: [7 , 13]
+Posição: [5 , 6]
+
+Token: < ADD , + >
+Posição: [5 , 8]
+
+Token: < INTEGER_CONST , 1 >
+Posição: [5 , 10]
 
 Token: < SEMI , ; >
-Posição: [7 , 14]
+Posição: [5 , 11]
 
-Token: < ID , x >
-Posição: [8 , 5]
+Token: < RTR , return >
+Posição: [7 , 2]
 
-Token: < ATTR , = >
-Posição: [8 , 7]
-
-Token: < ID , x >
-Posição: [8 , 9]
-
-Token: < MUL , * >
-Posição: [8 , 11]
-
-Token: < INTEGER_CONST , 2 >
-Posição: [8 , 13]
+Token: < INTEGER_CONST , 0 >
+Posição: [7 , 9]
 
 Token: < SEMI , ; >
-Posição: [8 , 14]
-
-Token: < ID , z >
-Posição: [9 , 5]
-
-Token: < ATTR , = >
-Posição: [9 , 7]
-
-Token: < ID , z >
-Posição: [9 , 9]
-
-Token: < DIV , / >
-Posição: [9 , 11]
-
-Token: < ID , x >
-Posição: [9 , 13]
-
-Token: < SEMI , ; >
-Posição: [9 , 14]
+Posição: [7 , 10]
 
 Token: < CLOSE_BRACKET , } >
-Posição: [10 , 3]
-
-<<<<<<< HEAD
-Token: < PRT , print >
-Posição: [11 , 3]
-
-Token: < OPEN_PAR , ( >
-Posição: [11 , 8]
-
-Token: < ID , x >
-Posição: [11 , 9]
-
-Token: < CLOSE_PAR , ) >
-Posição: [11 , 10]
-
-Token: < SEMI , ; >
-Posição: [11 , 11]
-
-Token: < PRT , print >
-Posição: [12 , 3]
-
-Token: < OPEN_PAR , ( >
-Posição: [12 , 8]
-
-Token: < ID , z >
-Posição: [12 , 9]
-
-Token: < CLOSE_PAR , ) >
-Posição: [12 , 10]
-
-Token: < SEMI , ; >
-Posição: [12 , 11]
-
-Token: < PRT , print >
-Posição: [13 , 3]
-
-Token: < OPEN_PAR , ( >
-Posição: [13 , 8]
-
-Token: < ID , x >
-Posição: [13 , 9]
-
-Token: < DIV , / >
-Posição: [13 , 10]
-
-Token: < SUB , - >
-Posição: [13 , 14]
-
-Token: < ID , y >
-Posição: [13 , 16]
-
-Token: < CLOSE_PAR , ) >
-Posição: [13 , 17]
-
-Token: < CLOSE_PAR , ) >
-Posição: [13 , 18]
-
-Token: < SEMI , ; >
-Posição: [13 , 19]
-=======
-Token: < PRT , printf >
-Posição: [11 , 3]
-
-Token: < OPEN_PAR , ( >
-Posição: [11 , 9]
-
-Token: < ID , x >
-Posição: [11 , 10]
-
-Token: < CLOSE_PAR , ) >
-Posição: [11 , 11]
-
-Token: < SEMI , ; >
-Posição: [11 , 12]
-
-Token: < PRT , printf >
-Posição: [12 , 3]
-
-Token: < OPEN_PAR , ( >
-Posição: [12 , 9]
-
-Token: < ID , z >
-Posição: [12 , 10]
-
-Token: < CLOSE_PAR , ) >
-Posição: [12 , 11]
-
-Token: < SEMI , ; >
-Posição: [12 , 12]
-
-Token: < PRT , printf >
-Posição: [13 , 3]
-
-Token: < OPEN_PAR , ( >
-Posição: [13 , 9]
-
-Token: < ID , x >
-Posição: [13 , 10]
-
-Token: < DIV , / >
-Posição: [13 , 11]
-
-Token: < OPEN_PAR , ( >
-Posição: [13 , 12]
-
-Token: < ID , z >
-Posição: [13 , 13]
-
-Token: < SUB , - >
-Posição: [13 , 15]
-
-Token: < ID , y >
-Posição: [13 , 17]
-
-Token: < CLOSE_PAR , ) >
-Posição: [13 , 18]
-
-Token: < CLOSE_PAR , ) >
-Posição: [13 , 19]
-
-Token: < SEMI , ; >
-Posição: [13 , 20]
->>>>>>> 88e1cdab6968367d33cee19ec71c97e15684866b
-
-Token: < CLOSE_BRACKET , } >
-Posição: [14 , 1]
+Posição: [8 , 1]
 

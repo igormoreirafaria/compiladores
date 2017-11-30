@@ -12,6 +12,7 @@ import java.util.HashMap;
  */
 public class Id extends Expr{
     public static HashMap<String, VariavelTabela> tabelaSimbolos = new HashMap<>();
+    
     public Id(String nome) {
         super(nome);
     }
@@ -35,5 +36,19 @@ public class Id extends Expr{
         System.out.println("Valor Id " + valor);
         tabelaSimbolos.get(nome).setValor(valor);
     }
- 
+    public void generateCode () {
+        if(address == null) {
+            address = new Operand();
+            address.setTableEntry(tabelaSimbolos.get(nome));
+            address.setName(nome);
+        }
+        System.out.println("Estou aqui");
+    }
+    public void generateBranchCode() {
+        generateCode();
+    }
+    public void generateRValueCode() {
+        
+        generateCode();
+    }
 }
