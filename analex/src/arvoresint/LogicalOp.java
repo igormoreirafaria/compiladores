@@ -53,6 +53,30 @@ public class LogicalOp extends Expr{
         return valor;
     }
     public void generateBranchCode() {
-        
+        if(nome.equals("||")) {
+            filhos.get(0).true_label = true_label;
+            filhos.get(0).false_label = new Label();
+            filhos.get(1).true_label = true_label;
+            filhos.get(1).false_label = false_label;
+            
+            filhos.get(0).generateBranchCode();
+            if(filhos.get(0).getAddress() != null) {
+                System.out.println("if " + filhos.get(0).getAddress().getName() + " != 0 goto" + filhos.get(0).true_label.getName());
+            }else {
+                System.out.println(filhos.get(0).false_label.getName() +  ":" );
+            }
+           
+            filhos.get(1).generateBranchCode();    
+            if (filhos.get(1).getAddress() != null) {
+                System.out.println("if " + filhos.get(1).getAddress().getName() + " == 0 goto " + filhos.get(1).true_label.getName());
+            }else {
+                System.out.println("goto " + filhos.get(1).true_label.getName());
+            }
+            
+        }
+    }
+    
+    public void generateCode() {
+        generateBranchCode();
     }
 }
