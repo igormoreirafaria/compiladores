@@ -119,7 +119,37 @@ public class AST extends Operand{
     public void generateBranchCode() {
     }
     
+    public void setLabel() {
+        true_label = new Label();
+        false_label = new Label();
+        next = new Label();
+    }
     public Operand getAddress() {
         return address;
     }
+
+    public Label getTrue_label() {
+        return true_label;
+    }
+
+    public Label getFalse_label() {
+        return false_label;
+    }
+
+    public Label getNext() {
+        return next;
+    }
+
+    public void setTrue_label(Label true_label) {
+        this.true_label = true_label;
+    }
+
+    public void setFalse_label(Label false_label) {
+        this.false_label = false_label;
+    }
+
+    public void setNext(Label next) {
+        this.next = next;
+    }
+    
 }

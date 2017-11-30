@@ -35,6 +35,9 @@ public class Attr extends AST{
     public void generateCode () {
         filhos.get(0).generateCode();
         filhos.get(1).generateRValueCode();
+        if(filhos.get(1).getAddress() == null) {
+            System.out.println("NULL");
+        }
         System.out.println( this.filhos.get(0).getNome()+ " = " + filhos.get(1).getAddress().getName());
     }
     public Operand getAddress() {
