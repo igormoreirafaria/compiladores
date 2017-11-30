@@ -1,10 +1,28 @@
 <AST>
+< Attr op='=' >
+<Id lexema=x tipo=INT >
+< NUM value=0>
+</Attr>
+< Attr op='=' >
+<Id lexema=y tipo=INT >
+< NUM value=1>
+</Attr>
+< Attr op='=' >
+<Id lexema=x tipo=INT >
+< ArithOp op='+' >
+< NUM value=3>
+< ArithOp op='-' >
+< NUM value=2>
+<Id lexema=x tipo=INT >
+</ArithOp>
+</ArithOp>
+</Attr>
 <If>
 <LogicaOp op=|| >
-< ArithOp op='+' >
+<LogicaOp op=&& >
 <Id lexema=x tipo=INT >
 <Id lexema=y tipo=INT >
-</ArithOp>
+</LogicalOp>
 <Id lexema=z tipo=INT >
 </LogicalOp>
 < c_true>

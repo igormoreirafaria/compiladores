@@ -4,8 +4,15 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/bruno/git/compiladores/analex/src/arvoresint/Temp.java</file>
+            <file>file:/C:/Users/bruno/git/compiladores/analex/src/arvoresint/ArvoreSintaxe.java</file>
+            <file>file:/C:/Users/bruno/git/compiladores/analex/src/arvoresint/Attr.java</file>
+            <file>file:/C:/Users/bruno/git/compiladores/analex/src/arvoresint/While.java</file>
             <file>file:/C:/Users/bruno/git/compiladores/analex/src/arvoresint/If.java</file>
+            <file>file:/C:/Users/bruno/git/compiladores/analex/src/arvoresint/AST.java</file>
+            <file>file:/C:/Users/bruno/git/compiladores/analex/src/arvoresint/Num.java</file>
             <file>file:/C:/Users/bruno/git/compiladores/analex/src/arvoresint/Operand.java</file>
+            <file>file:/C:/Users/bruno/git/compiladores/analex/src/arvoresint/Id.java</file>
+            <file>file:/C:/Users/bruno/git/compiladores/analex/src/arvoresint/LogicalOp.java</file>
         </group>
     </open-files>
 </project-private>

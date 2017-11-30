@@ -67,7 +67,6 @@ public class LogicalOp extends Expr{
             filhos.get(1).generateBranchCode();    
             if (filhos.get(1).getAddress() != null) {
                 System.out.println("if " + filhos.get(1).getAddress().getName() + " == 0 goto " + filhos.get(1).false_label.getName());
-            }else {
                 System.out.println("goto " + filhos.get(1).true_label.getName());
             }
             
@@ -87,7 +86,6 @@ public class LogicalOp extends Expr{
             filhos.get(1).generateBranchCode();    
             if (filhos.get(1).getAddress() != null) {
                 System.out.println("if " + filhos.get(1).getAddress().getName() + " == 0 goto " + filhos.get(1).false_label.getName());
-            }else {
                 System.out.println("goto " + filhos.get(1).true_label.getName());
             }
         }
