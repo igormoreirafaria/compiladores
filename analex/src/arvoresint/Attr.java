@@ -34,15 +34,10 @@ public class Attr extends AST{
     
     public void generateCode () {
         filhos.get(0).generateRValueCode();
-        filhos.get(1).generateRValueCode();
-        if(filhos.get(1).getTemporary() == null) {
-            System.out.println("NULL");
-        }
-        filhos.get(0).setTemporary(filhos.get(1).getTemporary());
-        
-        System.out.println(filhos.get(0).getNome() );
-        System.out.println(" = " + filhos.get(1).getAddress().getName());
-        
+        filhos.get(1).generateCode();
+        System.out.println( this.filhos.get(0).getNome()+ " = " + filhos.get(1).getAddress().getName());
     }
-    
+    public Operand getAddress() {
+        return address;
+    }
 }

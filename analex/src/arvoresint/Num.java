@@ -14,12 +14,6 @@ public class Num extends Expr{
     public Num(String nome) {
         super(nome);
     }
-    
-    /**
-     *
-     * @return
-     */
-    @Override
     public float evaluate() {
         return Float.parseFloat(nome);
     }           
@@ -28,16 +22,17 @@ public class Num extends Expr{
         xml.add("< NUM value=" + node.getNome() + ">");
     }
     public void generateCode(){
-        if(address == null) {
-            address = new Operand();
-            address.setName(nome);
-        }
+        address = new Operand();
+        address.setName(nome);
     }
     public void generateBranchCode() {
         generateCode();
     }
     public void generateRValueCode() {
         generateCode();
+    }
+    public Operand getAddress() {
+        return address;
     }
           
 }

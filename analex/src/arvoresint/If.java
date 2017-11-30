@@ -10,7 +10,7 @@ package arvoresint;
  * @author brunos1212
  */
 public class If extends AST{
-    
+    Label next;
     public If(String nome) {
         super(nome);
     }

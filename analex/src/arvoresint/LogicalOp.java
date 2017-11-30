@@ -10,7 +10,8 @@ package arvoresint;
  * @author brunos1212
  */
 public class LogicalOp extends Expr{
-
+    Label true_label;
+    Label false_label;
     
     public LogicalOp(String nome) {
         super(nome);
@@ -50,5 +51,8 @@ public class LogicalOp extends Expr{
         }
         
         return valor;
+    }
+    public void generateBranchCode() {
+        
     }
 }

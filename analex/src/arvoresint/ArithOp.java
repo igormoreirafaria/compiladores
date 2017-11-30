@@ -13,7 +13,6 @@ public class ArithOp extends Expr{
     
     public ArithOp(String nome) {
         super(nome);
-        address = new Operand();
     }
     
     public void toString(AST node) {
@@ -50,16 +49,19 @@ public class ArithOp extends Expr{
         return valor;
     }
     public void generateCode() {
-        filhos.get(0).generateRValueCode();
-        filhos.get(1).generateRValueCode();
+        address = new Operand();
+        filhos.get(0).generateCode();
+        filhos.get(1).generateCode();
         address.setTemporary(new Temp());
         address.setName(address.getTemporary().getName());
-        System.out.println(address.getName());
-        System.out.println(address.getTemporary().getName() + " = " + filhos.get(0).getNome() + nome + filhos.get(1).getNome());
+ 
+        System.out.println(address.getTemporary().getName() + " = " + filhos.get(0).getAddress().getName() + nome + filhos.get(1).getAddress().getName());
     }
     public void generateRValueCode() {
         generateCode();
-        
+    }
+    public Operand getAddress() {
+        return address;
     }
 }
 

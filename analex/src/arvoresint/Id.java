@@ -51,4 +51,7 @@ public class Id extends Expr{
         
         generateCode();
     }
+    public Operand getAddress() {
+        return address;
+    }
 }
