@@ -1,9 +1,28 @@
 <AST>
 < Attr op='=' >
 <Id lexema=a tipo=INT >
-< RelOp='<' >
 < NUM value=10>
-< NUM value=2>
-</RelOp>
 </Attr>
+< Attr op='=' >
+<Id lexema=b tipo=INT >
+< NUM value=5>
+</Attr>
+<If>
+< RelOp='>' >
+<Id lexema=a tipo=INT >
+<Id lexema=b tipo=INT >
+</RelOp>
+< c_true>
+< Attr op='=' >
+<Id lexema=c tipo=INT >
+<Id lexema=a tipo=INT >
+</Attr>
+</c_true>
+< c_false>
+< Attr op='=' >
+<Id lexema=c tipo=INT >
+<Id lexema=a tipo=INT >
+</Attr>
+</c_false>
+</If>
 </AST>

@@ -46,18 +46,20 @@ public class RelOp extends Expr{
                  aux = filhos.get(0).evaluate() == filhos.get(1).evaluate();
                  break;    
          }
-         if(aux == true){
+         if(aux == true){ 
              return 1;
          }else {
              return 0;
          }
     }
     public void generateBranchCode () {
-        address = new Operand();
+        true_label = new Label();
+        false_label = new Label();
         filhos.get(0).generateBranchCode();
         filhos.get(1).generateBranchCode();
         String test = filhos.get(0).getAddress().getName() + nome +  filhos.get(1).getAddress().getName();
-        
+        System.out.println("if "+test+" goto "+ true_label.getName());
+        System.out.println("goto "+false_label.getName());
     }
 
     public void generateRValueCode (){
@@ -71,10 +73,10 @@ public class RelOp extends Expr{
          address.setTemporary(new Temp());
          address.setName(address.getTemporary().getName());
          System.out.println("\t"+address.getName()+ " = 0");
-    
+         
          System.out.println("\tgoTo "+next.getName());
          System.out.println(false_label.getName()+": \n \t" + address.getName()+" = 1");
-         System.out.println(next.getName()+":");
+         System.out.println(next.getName() + ":");
     }
     public Operand getAddress () {
         return address;

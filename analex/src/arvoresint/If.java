@@ -32,7 +32,7 @@ public class If extends AST{
         if(filhos.size() > 1 ){
             if( a == 1 && filhos.get(1).getNome().equals("c_true")){
                 filhos.get(1).evaluate();
-            }if( a == 0 && filhos.get(2).getNome().equals("c_false")){
+            }if( a == 0 && filhos.size() < 2 && filhos.get(2).getNome().equals("c_false")){
                 filhos.get(2).evaluate();
             }
         }

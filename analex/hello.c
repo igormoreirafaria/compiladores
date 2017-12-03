@@ -2,11 +2,20 @@
 
 int main(){
 
-	int a;
+	int a = 10;
+	int b = 5;
+
+	int c;
+	
+	if(a>b){
+		c = a+b;
+	}else{
+		c = a-b;	
+	}
+
+
 
 	
-	a = 10<2;
-
 
 	return 0;
 }
