@@ -46,33 +46,32 @@ public class RelOp extends Expr{
                  aux = filhos.get(0).evaluate() == filhos.get(1).evaluate();
                  break;    
          }
-         if(aux == true){
+         if(aux == true){ 
              return 1;
          }else {
              return 0;
          }
     }
-    public void generateRValueCode () {
+    public void generateBranchCode () {
         address = new Operand();
         filhos.get(0).generateBranchCode();
         filhos.get(1).generateBranchCode();
-        address.setTemporary(new Temp());
-        address.setName(address.getTemporary().getName());
-        generateCode();
     }
-
-    public void generateCode (){
+    public void generateRValueCode (){
+         next = new Label();
          false_label = new Label();
+         filhos.get(0).generateCode();
+         filhos.get(1).generateCode();
          //System.out.println(address.getName() + " = " + filhos.get(0).getAddress().getName() + " - " + filhos.get(1).getAddress().getName());
          System.out.println("if " + filhos.get(0).getAddress().getName() + nome + filhos.get(1).getAddress().getName()+ " goTo "+ false_label.getName());
          address = new Operand();
          address.setTemporary(new Temp());
          address.setName(address.getTemporary().getName());
-         System.out.println("\t"+address.getName()+ " = 1");
+         System.out.println("\t"+address.getName()+ " = 0");
          
-         true_label = new Label();
-         System.out.println("\tgoTo "+true_label.getName());
-         System.out.println(false_label.getName()+": \n \t" + address.getName()+" = 0");
+         System.out.println("\tgoTo "+next.getName());
+         System.out.println(false_label.getName()+": \n \t" + address.getName()+" = 1");
+         System.out.println(next.getName() + ":");
     }
     public Operand getAddress () {
         return address;

@@ -90,7 +90,6 @@ public class LogicalOp extends Expr{
             }
         }
     }
-    
     public void generateRValueCode() {
         next = new Label();
         address = new Operand();

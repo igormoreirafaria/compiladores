@@ -62,6 +62,7 @@ public class ArithOp extends Expr{
         filhos.get(0).generateRValueCode();
         filhos.get(1).generateRValueCode();
         address.setTemporary(new Temp());
+        
         address.setName(address.getTemporary().getName());
         
         System.out.println(address.getName() + " = " + filhos.get(0).getAddress().getName() + " " + nome + " " + filhos.get(1).getAddress().getName());
