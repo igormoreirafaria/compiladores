@@ -34,6 +34,7 @@ public class ArvoreSintaxe {
     
     public int evaluate () {
         filho.evaluate();
+        System.out.println("---- Geração de código intermediário ------");
         filho.generateCode();
         return 0;
     }

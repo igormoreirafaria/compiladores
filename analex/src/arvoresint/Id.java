@@ -42,7 +42,6 @@ public class Id extends Expr{
             address.setTableEntry(tabelaSimbolos.get(nome));
             address.setName(nome);
         }
-        System.out.println("Estou aqui");
     }
     public void generateBranchCode() {
         generateCode();

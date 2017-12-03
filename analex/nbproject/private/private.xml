@@ -3,8 +3,21 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/home/igor/Documents/compiladores/analex/src/arvoresint/Label.java</file>
             <file>file:/home/igor/Documents/compiladores/analex/src/arvoresint/If.java</file>
+=======
+            <file>file:/C:/Users/bruno/git/compiladores/analex/src/arvoresint/Temp.java</file>
+            <file>file:/C:/Users/bruno/git/compiladores/analex/src/arvoresint/ArvoreSintaxe.java</file>
+            <file>file:/C:/Users/bruno/git/compiladores/analex/src/arvoresint/Attr.java</file>
+            <file>file:/C:/Users/bruno/git/compiladores/analex/src/arvoresint/While.java</file>
+            <file>file:/C:/Users/bruno/git/compiladores/analex/src/arvoresint/If.java</file>
+            <file>file:/C:/Users/bruno/git/compiladores/analex/src/arvoresint/AST.java</file>
+            <file>file:/C:/Users/bruno/git/compiladores/analex/src/arvoresint/Num.java</file>
+            <file>file:/C:/Users/bruno/git/compiladores/analex/src/arvoresint/Operand.java</file>
+            <file>file:/C:/Users/bruno/git/compiladores/analex/src/arvoresint/Id.java</file>
+            <file>file:/C:/Users/bruno/git/compiladores/analex/src/arvoresint/LogicalOp.java</file>
+>>>>>>> d71587821901094825299d8e9f937816e67f0d26
         </group>
     </open-files>
 </project-private>

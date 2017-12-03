@@ -48,7 +48,7 @@ public class ArithOp extends Expr{
         }
         return valor;
     }
-    public void generateCode() {
+    public void generateBranchCode() {
         address = new Operand();
         filhos.get(0).generateBranchCode();
         filhos.get(1).generateBranchCode();
@@ -58,7 +58,14 @@ public class ArithOp extends Expr{
         System.out.println(address.getTemporary().getName() + " = " + filhos.get(0).getAddress().getName() + nome + filhos.get(1).getAddress().getName());
     }
     public void generateRValueCode() {
-        generateCode();
+        address = new Operand();
+        filhos.get(0).generateRValueCode();
+        filhos.get(1).generateRValueCode();
+        address.setTemporary(new Temp());
+        address.setName(address.getTemporary().getName());
+        
+        System.out.println(address.getName() + " = " + filhos.get(0).getAddress().getName() + " " + nome + " " + filhos.get(1).getAddress().getName());
+        
     }
     public Operand getAddress() {
         return address;
