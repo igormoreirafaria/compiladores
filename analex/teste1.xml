@@ -1,12 +1,4 @@
 <AST>
-< Attr op='=' >
-<Id lexema=a tipo=INT >
-< NUM value=10>
-</Attr>
-< Attr op='=' >
-<Id lexema=b tipo=INT >
-< NUM value=5>
-</Attr>
 <If>
 < RelOp='>' >
 <Id lexema=a tipo=INT >
@@ -15,13 +7,19 @@
 < c_true>
 < Attr op='=' >
 <Id lexema=c tipo=INT >
+< ArithOp op='+' >
 <Id lexema=a tipo=INT >
+<Id lexema=b tipo=INT >
+</ArithOp>
 </Attr>
 </c_true>
 < c_false>
 < Attr op='=' >
 <Id lexema=c tipo=INT >
+< ArithOp op='-' >
 <Id lexema=a tipo=INT >
+<Id lexema=b tipo=INT >
+</ArithOp>
 </Attr>
 </c_false>
 </If>

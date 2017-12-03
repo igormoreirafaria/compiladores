@@ -150,9 +150,9 @@ public class AnalisadorLexico {
                             token = "";
                         }
                         token = token + cabeca;
-                        ++j;
+                        j++;
                         cabeca = linha.charAt(j);
-                        if(token.charAt(0) == '+' && cabeca == '+'){
+                        if(token.charAt(0)  == '+'&& cabeca == '+'){
                             token = token + cabeca;
                             regexMatch(new Lexema(token, i + 1, (j+1) - token.length()));
                             token = "";
@@ -160,17 +160,17 @@ public class AnalisadorLexico {
                             token = token + cabeca;
                             regexMatch(new Lexema(token, i + 1, (j+1) - token.length()));
                             token = "";
-                        }
-                        else{
-                            --j;
-                            cabeca = linha.charAt(j);
-                            /*regexMatch(new Lexema(token, i + 1, (j+1) - token.length()));
+                        }else{                     
+                            j--;                                 
+                            cabeca = linha.charAt(j);                          
+                            regexMatch(new Lexema(token, i + 1, (j+1) - token.length()));
                             token = "";
-                            if((int)cabeca != 32 && (int)cabeca != 9 && (int)cabeca != 10) {
-                                token = token + cabeca;
-                            }*/
+                            
+                            
+                            continue;
+                            
                         }
-                        continue;
+                       
                     }
                     
                     //op Logicos e atribuição

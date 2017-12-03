@@ -21,14 +21,8 @@ Posição: [5 , 2]
 Token: < ID , a >
 Posição: [5 , 6]
 
-Token: < ATTR , = >
-Posição: [5 , 8]
-
-Token: < INTEGER_CONST , 10 >
-Posição: [5 , 10]
-
 Token: < SEMI , ; >
-Posição: [5 , 12]
+Posição: [5 , 7]
 
 Token: < INT , int >
 Posição: [6 , 2]
@@ -36,14 +30,8 @@ Posição: [6 , 2]
 Token: < ID , b >
 Posição: [6 , 6]
 
-Token: < ATTR , = >
-Posição: [6 , 8]
-
-Token: < INTEGER_CONST , 5 >
-Posição: [6 , 10]
-
 Token: < SEMI , ; >
-Posição: [6 , 11]
+Posição: [6 , 7]
 
 Token: < INT , int >
 Posição: [8 , 2]
@@ -55,71 +43,83 @@ Token: < SEMI , ; >
 Posição: [8 , 7]
 
 Token: < IF , if >
-Posição: [10 , 2]
+Posição: [9 , 2]
 
 Token: < OPEN_PAR , ( >
-Posição: [10 , 4]
+Posição: [9 , 4]
 
 Token: < ID , a >
-Posição: [10 , 5]
+Posição: [9 , 5]
 
 Token: < GRT , > >
-Posição: [10 , 6]
+Posição: [9 , 6]
 
 Token: < ID , b >
-Posição: [10 , 7]
+Posição: [9 , 7]
 
 Token: < CLOSE_PAR , ) >
+Posição: [9 , 8]
+
+Token: < OPEN_BRACKET , { >
+Posição: [9 , 9]
+
+Token: < ID , c >
+Posição: [10 , 3]
+
+Token: < ATTR , = >
+Posição: [10 , 5]
+
+Token: < ID , a >
+Posição: [10 , 7]
+
+Token: < ADD , + >
 Posição: [10 , 8]
 
-Token: < OPEN_BRACKET , { >
-Posição: [10 , 9]
-
-Token: < ID , c >
-Posição: [11 , 3]
-
-Token: < ATTR , = >
-Posição: [11 , 5]
-
-Token: < ID , a >
-Posição: [11 , 7]
+Token: < ID , b >
+Posição: [10 , 11]
 
 Token: < SEMI , ; >
-Posição: [11 , 10]
+Posição: [10 , 13]
 
 Token: < CLOSE_BRACKET , } >
-Posição: [12 , 2]
+Posição: [11 , 2]
 
 Token: < ELSE , else >
-Posição: [12 , 3]
+Posição: [11 , 3]
 
 Token: < OPEN_BRACKET , { >
-Posição: [12 , 7]
+Posição: [11 , 7]
 
 Token: < ID , c >
-Posição: [13 , 3]
+Posição: [12 , 3]
 
 Token: < ATTR , = >
-Posição: [13 , 5]
+Posição: [12 , 4]
 
 Token: < ID , a >
-Posição: [13 , 7]
+Posição: [12 , 6]
+
+Token: < SUB , - >
+Posição: [12 , 6]
+
+Token: < ID , b >
+Posição: [12 , 8]
 
 Token: < SEMI , ; >
-Posição: [13 , 10]
+Posição: [12 , 9]
 
 Token: < CLOSE_BRACKET , } >
-Posição: [14 , 2]
+Posição: [13 , 2]
 
 Token: < RTR , return >
-Posição: [20 , 2]
+Posição: [19 , 2]
 
 Token: < INTEGER_CONST , 0 >
-Posição: [20 , 9]
+Posição: [19 , 9]
 
 Token: < SEMI , ; >
-Posição: [20 , 10]
+Posição: [19 , 10]
 
 Token: < CLOSE_BRACKET , } >
-Posição: [21 , 1]
+Posição: [20 , 1]
 
