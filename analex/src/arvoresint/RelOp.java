@@ -52,13 +52,29 @@ public class RelOp extends Expr{
              return 0;
          }
     }
-
-    public void generateBranchCode (){
-         filhos.get(0).generateBranchCode();
-         filhos.get(1).generateBranchCode() ;
-         System.out.println( this.filhos.get(0).getNome()+ " = " + filhos.get(1).getAddress().getName());
+    public void generateRValueCode () {
+        address = new Operand();
+        filhos.get(0).generateBranchCode();
+        filhos.get(1).generateBranchCode();
+        address.setTemporary(new Temp());
+        address.setName(address.getTemporary().getName());
+        generateCode();
     }
-    public Operand getAddress() {
+
+    public void generateCode (){
+         false_label = new Label();
+         //System.out.println(address.getName() + " = " + filhos.get(0).getAddress().getName() + " - " + filhos.get(1).getAddress().getName());
+         System.out.println("if " + filhos.get(0).getAddress().getName() + nome + filhos.get(1).getAddress().getName()+ " goTo "+ false_label.getName());
+         address = new Operand();
+         address.setTemporary(new Temp());
+         address.setName(address.getTemporary().getName());
+         System.out.println("\t"+address.getName()+ " = 1");
+         
+         true_label = new Label();
+         System.out.println("\tgoTo "+true_label.getName());
+         System.out.println(false_label.getName()+": \n \t" + address.getName()+" = 0");
+    }
+    public Operand getAddress () {
         return address;
     }   
 

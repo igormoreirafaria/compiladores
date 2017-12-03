@@ -29,6 +29,9 @@ public class AST extends Operand{
     private String tipo; // id, expr, if
     float valor;
     Operand address;
+    Label true_label;
+    Label false_label;
+    Label next; 
     
     static ArrayList<String> xml = new ArrayList<String>();
     
@@ -111,6 +114,9 @@ public class AST extends Operand{
     
     public void generateRValueCode(){
         
+    }
+    
+    public void generateBranchCode() {
     }
     
     public Operand getAddress() {

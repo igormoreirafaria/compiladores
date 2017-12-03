@@ -50,8 +50,8 @@ public class ArithOp extends Expr{
     }
     public void generateCode() {
         address = new Operand();
-        filhos.get(0).generateCode();
-        filhos.get(1).generateCode();
+        filhos.get(0).generateBranchCode();
+        filhos.get(1).generateBranchCode();
         address.setTemporary(new Temp());
         address.setName(address.getTemporary().getName());
  

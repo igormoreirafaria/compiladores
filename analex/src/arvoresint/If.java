@@ -39,5 +39,8 @@ public class If extends AST{
         
         return valor;
     }
+    public void generateCode() {
+        
+    }
         
 }

@@ -1,9 +1,9 @@
 <AST>
 < Attr op='=' >
 <Id lexema=a tipo=INT >
-<LogicaOp op=&& >
+< RelOp='>' >
 < NUM value=1>
-< NUM value=0>
-</LogicalOp>
+< NUM value=5>
+</RelOp>
 </Attr>
 </AST>

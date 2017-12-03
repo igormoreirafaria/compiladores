@@ -2,7 +2,11 @@
 
 int main(){
 	int a;
-	a = 1 && 0;
+
+	if(5>1){
+		a = 10;
+	}
+
 
 	return 0;
 }
