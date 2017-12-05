@@ -1,8 +1,9 @@
 int main()
 {
   int x = 0, y = 1, z;
-  if (x || y)
+  if (x || y){
     z = 1;
-  else
+  }else{
     z = 0;
+  }
 }

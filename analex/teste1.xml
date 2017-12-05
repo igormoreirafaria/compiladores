@@ -1,26 +1,78 @@
 <AST>
-<If>
-< RelOp='>' >
+< Attr op='=' >
 <Id lexema=a tipo=INT >
+< NUM value=1>
+</Attr>
+< Attr op='=' >
 <Id lexema=b tipo=INT >
-</RelOp>
-< c_true>
+< NUM value=2>
+</Attr>
 < Attr op='=' >
 <Id lexema=c tipo=INT >
+< NUM value=3>
+</Attr>
+< Attr op='=' >
+<Id lexema=d tipo=INT >
+< NUM value=0>
+</Attr>
+< While=WHILE >
+<LogicaOp op=|| >
+<LogicaOp op=&& >
+< RelOp='!=' >
+<Id lexema=c tipo=INT >
+< NUM value=5>
+</RelOp>
+< RelOp='<' >
+<Id lexema=a tipo=INT >
+< NUM value=4>
+</RelOp>
+</LogicalOp>
+< RelOp='==' >
+<Id lexema=b tipo=INT >
+< NUM value=1>
+</RelOp>
+</LogicalOp>
+< c_true>
+<If>
+<LogicaOp op=|| >
+< RelOp='>=' >
+<Id lexema=a tipo=INT >
+< ArithOp op='+' >
+<Id lexema=c tipo=INT >
+<Id lexema=d tipo=INT >
+</ArithOp>
+</RelOp>
+<LogicaOp op=&& >
+< RelOp='<' >
+< ArithOp op='-' >
+<Id lexema=b tipo=INT >
+<Id lexema=d tipo=INT >
+</ArithOp>
+<Id lexema=a tipo=INT >
+</RelOp>
+< RelOp='!=' >
+<Id lexema=c tipo=INT >
+<Id lexema=d tipo=INT >
+</RelOp>
+</LogicalOp>
+</LogicalOp>
+< c_true>
+< Attr op='=' >
+<Id lexema=a tipo=INT >
 < ArithOp op='+' >
 <Id lexema=a tipo=INT >
-<Id lexema=b tipo=INT >
+< NUM value=1>
 </ArithOp>
 </Attr>
 </c_true>
-< c_false>
+</If>
 < Attr op='=' >
 <Id lexema=c tipo=INT >
 < ArithOp op='-' >
-<Id lexema=a tipo=INT >
-<Id lexema=b tipo=INT >
+<Id lexema=c tipo=INT >
+< NUM value=1>
 </ArithOp>
 </Attr>
-</c_false>
-</If>
+</c_true>
+</While>
 </AST>

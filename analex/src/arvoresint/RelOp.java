@@ -53,8 +53,6 @@ public class RelOp extends Expr{
          }
     }
     public void generateBranchCode () {
-        true_label = new Label();
-        false_label = new Label();
         filhos.get(0).generateBranchCode();
         filhos.get(1).generateBranchCode();
         String test = filhos.get(0).getAddress().getName() + nome +  filhos.get(1).getAddress().getName();

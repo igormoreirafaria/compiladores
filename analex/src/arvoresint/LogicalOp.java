@@ -59,7 +59,7 @@ public class LogicalOp extends Expr{
             
             filhos.get(0).generateBranchCode();
             if(filhos.get(0).getAddress() != null) {
-                System.out.println("if " + filhos.get(0).getAddress().getName() + " != 1 goto " + filhos.get(0).true_label.getName());
+                System.out.println("if " + filhos.get(0).getAddress().getName() + " == 1 goto " + filhos.get(0).true_label.getName());
             }else {
                 System.out.println(filhos.get(0).false_label.getName() +  ":" );
             }
@@ -78,7 +78,7 @@ public class LogicalOp extends Expr{
             
             filhos.get(0).generateBranchCode();
             if(filhos.get(0).getAddress() != null) {
-                System.out.println("if " + filhos.get(0).getAddress().getName() + " == 0 goto " + filhos.get(0).false_label.getName());
+                System.out.println("if " + filhos.get(0).getAddress().getName() + " != 1 goto " + filhos.get(0).false_label.getName());
             }else {
                 System.out.println(filhos.get(0).true_label.getName() +  ":" );
             }
@@ -100,7 +100,7 @@ public class LogicalOp extends Expr{
             
             filhos.get(0).generateBranchCode();
             
-            System.out.println("if " + filhos.get(0).getAddress().getName() + " != 1 goto " + filhos.get(0).false_label.getName());
+            System.out.println("if " + filhos.get(0).getAddress().getName() + " == 0 goto " + filhos.get(0).false_label.getName());
            
             System.out.println( address.getName() + " = 1");
             System.out.println("goto " + next.getName());

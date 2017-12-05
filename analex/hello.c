@@ -6,10 +6,10 @@ int main(){
 	int b;
 
 	int c;
-	if(a>b){
-		c = a + b ;
-	}else{
-		c= a-b;	
+	while (b || c && a) {
+		a = 1;
+		b = 2;
+		c = 4;
 	}
 
 
